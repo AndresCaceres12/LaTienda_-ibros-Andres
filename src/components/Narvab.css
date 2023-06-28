@@ -1,0 +1,185 @@
+@font-face {
+  font-family: "Poppins";
+  src: url(path/to/font.woff2) format("woff2"),
+       url(path/to/font.woff) format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+.NavbarCarro{
+   display: flex;
+   justify-content: space-between;
+   border-bottom: 2px solid #3A4646;
+   z-index: 2;
+   position: fixed;
+ top: 0;
+ right: 0;
+ width: 30%;
+ height: 10%;
+ background-color: white;
+ border-left: 1px solid gray;
+ overflow-y: auto
+}
+.CarritoContainer {
+  /* position: absolute;
+  margin-left: 78%;
+  z-index: 9999;
+  background-color: rgb(56, 56, 56);
+  width: 300px;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+  color: white;
+  
+  */
+  z-index: 2;
+  position: fixed;
+top: 10;
+right: 0;
+bottom: 10%;
+width: 30%;
+height: 80%;
+background-color: white;
+border-left: 1px solid gray;
+overflow-y: auto
+}
+.CarritoContainer p{
+  cursor: pointer;
+  font-size: 15px;
+
+}
+.CarritoContainer p:hover{
+
+  margin-top: 0;
+  transform: scale(1.8);
+  border-radius: 20px;
+  height: 21px;
+  
+}
+.Carrito-list{
+  margin: 0;
+  padding: 3px;
+  list-style: none;
+
+}
+.Carrito-list li{
+  
+font-size: 12px;
+}
+.ContenedorCard{
+  display: flex;
+  width: 100%;
+justify-content: space-between;
+}
+.FooterContainer {
+  z-index: 2;
+ position: fixed;
+top: 90%;
+bottom: 0;
+width: 30%;
+height: 10%;
+background-color: white;
+border-top: 1px solid gray;
+overflow-y: auto
+}
+.custom-list-container {
+    position: absolute;
+    left: 60%;
+    z-index: 9999;
+    background-color: rgb(56, 56, 56);
+    width: 300px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    color: white;
+    
+    
+  }
+  .custom-list-container1{
+    position: absolute;
+    left: 70%;
+    z-index: 9999;
+    background-color: rgb(56, 56, 56);
+    width: 300px;
+    box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    color: white;
+  }
+  
+  .custom-list {
+    margin: 0;
+    padding: 3px;
+    list-style: none;
+    
+    
+  }
+  
+  .custom-list li{
+    border-bottom: 1px solid white;
+    padding: 5px;
+    margin: 0 auto;
+    font-family: "Poppins";
+  }
+  .custom-list :hover{
+    background-color: #3A4646;
+    cursor: pointer;
+  }
+  .ContieneNarvab {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    background-color: #fffdfd;
+    border-radius: 20px;
+     box-sizing: border-box;
+    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+    color: black;
+    padding: 10px;
+  }
+  .ContieneNarvab ul{
+    display: flex;
+    list-style: none;
+    gap: 40px;
+    margin: 20px 0px;
+    font-family: "Poppins";
+  
+  }
+ 
+.ov-btn-slide-left {
+  background: #fff;
+  color: #5a5a5a; 
+  border: 2px solid #5a5a5a; 
+  padding: 8px 16px;
+  border-radius: 3px; 
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+}
+.ContieneNarvab h3{
+    margin: 18px auto;
+    font-family: "Montserrat", sans-serif;
+  }
+.ov-btn-slide-left:hover {
+  color: #fff; 
+  cursor: pointer;
+}
+.ov-btn-slide-left::after {
+  content: "";
+  background: #7b7a86;
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  top: 0;
+  bottom: 0;
+  left: -100%;
+  right: 100%;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+.ov-btn-slide-left:hover::after {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  -webkit-transition: all 0.35s;
+  transition: all 0.35s;
+}
+  
