@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Narvab from "./Narvab";
 import "./RenderizarLibros.css";
 import { Carrusel } from "./Carrusel";
-import Carrito from "./Carrito";
+
 
 export const RenderizarLibros = () => {
   let books = [
@@ -41,11 +41,15 @@ export const RenderizarLibros = () => {
 
   const [bookInfo, setBookInfo] = useState([]);
   const [categorias, setCategorias] = useState([]);
-  const [allProducts, setAllProducts] = useState([]); 
+  const [allProducts, setAllProducts] = useState([]);
   const [EsconderCarro, setEscondercarro] = useState(false);
-  function randomNumberInRange(min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-    }
+  const [selectedlibro, setSelectedlibro] = useState(null);
+  const randomNumberInRange = (min, max) => {
+    const random = Math.random() * (max - min) + min;
+    const rounded = Math.round(random);
+    const formatted = rounded.toLocaleString('es', { useGrouping: true, maximumFractionDigits: 0 });
+    return formatted;
+  };
   useEffect(() => {
     const fetchBooks = async () => {
       const bookData = await Promise.all(
@@ -71,7 +75,7 @@ export const RenderizarLibros = () => {
             author: author,
             image_url: image_url,
             categoria: categoria,
-            precio: randomNumberInRange(50, 200)
+            precio : randomNumberInRange(50000, 200000)
           };
         })
       );
@@ -89,7 +93,10 @@ export const RenderizarLibros = () => {
   const onAddProduct = (product) => {
     setAllProducts([...allProducts, product]);
   };
-
+  const handlelibroClick = (libro) => {
+    console.log("click")
+    setSelectedlibro(libro);
+  };
   return (
     <div>
       <Narvab
@@ -101,10 +108,10 @@ export const RenderizarLibros = () => {
         onAddProduct={onAddProduct}
         setMostrarCarrito={setEscondercarro}
       />
-      {EsconderCarro && <Carrito />}
+
       <Carrusel bookInfo={bookInfo} />
       {filteredBooks.length > 0 && (
-        <div className="container">
+        <div className="container" >
           <div className="row">
             {filteredBooks.map((book, index) => (
               <div key={index} className="col-md-3">
@@ -112,7 +119,8 @@ export const RenderizarLibros = () => {
                   <div className="card-body">
                     <h5 className="card-title">Titulo: {book.title}</h5>
                     {book.image_url ? (
-                      <img src={book.image_url} alt="" />
+                      
+                      <img src={book.image_url} alt="" onClick={() => handlelibroClick(book)} />
                     ) : (
                       <span>No hay imagen disponible</span>
                     )}

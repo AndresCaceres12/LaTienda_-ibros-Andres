@@ -3,38 +3,39 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./Narvab.css";
 
-const ProductosSeleccionados = ({ allProducts, toggleMostrarProductos }) => {
+const ProductosSeleccionados = ({ allProducts, toggleMostrarProductos,bookInfo }) => {
   const [Cart, setCart] = useState(allProducts);
-  const [total,settotal] =useState()
+  const [total, setTotal] = useState(0);
+
   const SumarTotal = () => {
     let total = 0;
   
     Cart.forEach((product) => {
-      total += product.precio;
+      const price = parseFloat(product.precio.replace(".", ""));
+      total += price;
     });
   
-    settotal(total);
+    setTotal(total);
   };
-  useEffect(() => {
-        SumarTotal()
-  }, [Cart])
   
+  useEffect(() => {
+    SumarTotal();
+  }, [Cart]);
+
   const removeFromCart = (product) => {
     const index = Cart.findIndex((item) => item.id === product.id);
 
     if (index !== -1) {
       const newCart = [...Cart];
-
       newCart.splice(index, 1);
-
       setCart(newCart);
     }
   };
+  
   return (
-    
     <div className="CarritoContainer">
       <div className="NavbarCarro">
-        <h4>carrito</h4>
+        <h4>Carrito</h4>
         <h3 onClick={toggleMostrarProductos}>x</h3>
       </div>
 
@@ -44,27 +45,24 @@ const ProductosSeleccionados = ({ allProducts, toggleMostrarProductos }) => {
           <li key={index}>
             <div className="ContenedorCard">
               <img src={product.image_url} width={"70px"} alt="" srcset="" />
-              Libro :{product.title}
-              <p
-                onClick={() => {
-                  removeFromCart(product);
-                }}
-              >
-                x
-              </p>
+              Libro: {product.title}
+              <p onClick={() => removeFromCart(product)}>x</p>
             </div>
-            <h6>Precio : $ {product.precio}</h6>
+            <h6>Precio: $ {product.precio}</h6>
           </li>
         ))}
       </ul>
+
       <footer>
         <div className="FooterContainer">
-          <h3>total a pagar = {total}</h3>
+          <h5>total a pagar = {total.toLocaleString()}</h5>
+          <button>Pagar</button>
         </div>
       </footer>
     </div>
   );
 };
+
 
 const Narvab = ({
   bookInfo,
@@ -77,13 +75,21 @@ const Narvab = ({
   const [categoriasList, setCategoriasList] = useState(false);
   const [mostrarProductos, setMostrarProductos] = useState(false);
 
+  useEffect(() => {
+    setCategoriasList(false);
+    setLista(false);
+  }, [mostrarProductos]);
+
   const mostrarAutores = () => {
     setLista(!lista);
+    setCategoriasList(false);
+    setMostrarProductos(false)
   };
-
 
   const mostrarCategorias = () => {
     setCategoriasList(!categoriasList);
+    setLista(false);
+    setMostrarProductos(false)
   };
 
   const filtrarPorCategoria = (categoria) => {
@@ -116,7 +122,7 @@ const Narvab = ({
       <div className="ContieneNarvab">
         <h3>Libros con Andres</h3>
         <ul>
-          <Link onClick={VolverAincio} className="ov-btn-slide-left" to="/">
+          <Link onClick={VolverAincio} id="Inicio" className="ov-btn-slide-left" to="/">
             Inicio
           </Link>
           <li className="ov-btn-slide-left" onClick={mostrarCategorias}>
