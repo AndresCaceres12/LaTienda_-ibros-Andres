@@ -49,14 +49,12 @@ const ProductosSeleccionados = ({
             <div className="ContenedorCard">
               <img src={product.image_url} width={"50px"} alt="" srcset="" />
               <div className="DescripcionBook">
-                   <span>Libro: {product.title}</span>
-              <h6>Precio: $ {product.precio}</h6>
+                <span>Libro: {product.title}</span>
+                <h6>Precio: $ {product.precio}</h6>
               </div>
-           
+
               <p onClick={() => removeFromCart(product)}>🗑️</p>
             </div>
-            
-            
           </li>
         ))}
       </ul>
@@ -64,15 +62,15 @@ const ProductosSeleccionados = ({
       <footer>
         <div className="FooterContainer">
           <div className="TotalPrecio">
-              <h5>total a pagar </h5>
-         <h5 style={{color:"orange"}}>{total.toLocaleString() }</h5>
+            <h5>total a pagar </h5>
+            <h5 style={{ color: "orange" }}>{total.toLocaleString()}</h5>
           </div>
-  
-         <Link to={"/Pagos"}>
-          <button>pagar</button>
-          </Link>
+          {allProducts.length > 0 && (
+            <Link to="/Pagos">
+              <button>pagar</button>
+            </Link>
+          )}
         </div>
-         
       </footer>
     </div>
   );
@@ -139,18 +137,18 @@ const Narvab = ({
           <Link
             onClick={VolverAincio}
             id="Inicio"
-            className="ov-btn-slide-left"
+            className="BotonesDeInicio"
             to="/"
           >
             Inicio
           </Link>
-          <li className="ov-btn-slide-left" onClick={mostrarCategorias}>
+          <li className="BotonesDeInicio" onClick={mostrarCategorias}>
             Categorias
           </li>
-          <li className="ov-btn-slide-left" onClick={mostrarAutores}>
+          <li className="BotonesDeInicio" onClick={mostrarAutores}>
             Autores
           </li>
-          <li className="ov-btn-slide-left" onClick={toggleMostrarProductos}>
+          <li className="BotonesDeInicio" onClick={toggleMostrarProductos}>
             carrito
           </li>
         </ul>

@@ -1,21 +1,25 @@
-import React from 'react'
+import React from 'react';
 import { useParams } from 'react-router-dom';
-const Apartado = ({bookInfo}) => {
+
+const Apartado = (props) => {
+  const { bookInfo } = props
   const { index } = useParams();
-  const movie = bookInfo[index];
-  if (!movie) {
-    return <div></div>;
+
+console.log(props)
+  const selectedBook = bookInfo[index];
+
+  if (!selectedBook) {
+    return <div>Libro no encontrado</div>;
   }
 
-  console.log(bookInfo)
   return (
     <div>
-      <div className='DescripcionP'>
-      <h2> Titulo : {movie.title}</h2>
-   
-      </div> 
+      <h2>{selectedBook.title}</h2>
+      <p>Autor: {selectedBook.author}</p>
+      <img src={selectedBook.image_url} alt={selectedBook.title} />
+      <p>Precio: ${selectedBook.precio}</p>
     </div>
-  )
+  );
 }
 
-export default Apartado
+export default Apartado;

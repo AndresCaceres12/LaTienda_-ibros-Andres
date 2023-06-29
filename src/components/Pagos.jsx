@@ -11,7 +11,7 @@ const Pagos = () => {
           <Link
             // onClick={VolverAincio}
             id="Inicio"
-            className="ov-btn-slide-left"
+            className="BotonesDeInicio"
             to="/"
           >
             Inicio
