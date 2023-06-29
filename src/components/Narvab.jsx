@@ -3,21 +3,25 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./Narvab.css";
 
-const ProductosSeleccionados = ({ allProducts, toggleMostrarProductos,bookInfo }) => {
+const ProductosSeleccionados = ({
+  allProducts,
+  toggleMostrarProductos,
+  bookInfo,
+}) => {
   const [Cart, setCart] = useState(allProducts);
   const [total, setTotal] = useState(0);
 
   const SumarTotal = () => {
     let total = 0;
-  
+
     Cart.forEach((product) => {
       const price = parseFloat(product.precio.replace(".", ""));
       total += price;
     });
-  
+
     setTotal(total);
   };
-  
+
   useEffect(() => {
     SumarTotal();
   }, [Cart]);
@@ -31,7 +35,7 @@ const ProductosSeleccionados = ({ allProducts, toggleMostrarProductos,bookInfo }
       setCart(newCart);
     }
   };
-  
+
   return (
     <div className="CarritoContainer">
       <div className="NavbarCarro">
@@ -39,30 +43,40 @@ const ProductosSeleccionados = ({ allProducts, toggleMostrarProductos,bookInfo }
         <h3 onClick={toggleMostrarProductos}>x</h3>
       </div>
 
-      <h3>Productos seleccionados:</h3>
       <ul className="Carrito-list">
         {Cart.map((product, index) => (
           <li key={index}>
             <div className="ContenedorCard">
-              <img src={product.image_url} width={"70px"} alt="" srcset="" />
-              Libro: {product.title}
-              <p onClick={() => removeFromCart(product)}>x</p>
+              <img src={product.image_url} width={"50px"} alt="" srcset="" />
+              <div className="DescripcionBook">
+                   <span>Libro: {product.title}</span>
+              <h6>Precio: $ {product.precio}</h6>
+              </div>
+           
+              <p onClick={() => removeFromCart(product)}>🗑️</p>
             </div>
-            <h6>Precio: $ {product.precio}</h6>
+            
+            
           </li>
         ))}
       </ul>
 
       <footer>
         <div className="FooterContainer">
-          <h5>total a pagar = {total.toLocaleString()}</h5>
-          <button>Pagar</button>
+          <div className="TotalPrecio">
+              <h5>total a pagar </h5>
+         <h5 style={{color:"orange"}}>{total.toLocaleString() }</h5>
+          </div>
+  
+         <Link to={"/Pagos"}>
+          <button>pagar</button>
+          </Link>
         </div>
+         
       </footer>
     </div>
   );
 };
-
 
 const Narvab = ({
   bookInfo,
@@ -83,13 +97,13 @@ const Narvab = ({
   const mostrarAutores = () => {
     setLista(!lista);
     setCategoriasList(false);
-    setMostrarProductos(false)
+    setMostrarProductos(false);
   };
 
   const mostrarCategorias = () => {
     setCategoriasList(!categoriasList);
     setLista(false);
-    setMostrarProductos(false)
+    setMostrarProductos(false);
   };
 
   const filtrarPorCategoria = (categoria) => {
@@ -111,18 +125,23 @@ const Narvab = ({
   const uniqueAuthors = Array.from(
     new Set(bookInfo.map((book) => book.author))
   );
- 
-  const uniqueCategories = ["Todos los libros", ...Array.from(
-    new Set(bookInfo.map((book) => book.categoria))
-  )];
 
+  const uniqueCategories = [
+    "Todos los libros",
+    ...Array.from(new Set(bookInfo.map((book) => book.categoria))),
+  ];
 
   return (
     <>
       <div className="ContieneNarvab">
         <h3>Libros con Andres</h3>
         <ul>
-          <Link onClick={VolverAincio} id="Inicio" className="ov-btn-slide-left" to="/">
+          <Link
+            onClick={VolverAincio}
+            id="Inicio"
+            className="ov-btn-slide-left"
+            to="/"
+          >
             Inicio
           </Link>
           <li className="ov-btn-slide-left" onClick={mostrarCategorias}>

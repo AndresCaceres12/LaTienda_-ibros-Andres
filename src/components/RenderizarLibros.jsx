@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Narvab from "./Narvab";
 import "./RenderizarLibros.css";
 import { Carrusel } from "./Carrusel";
-
+import { Link } from "react-router-dom";
 
 export const RenderizarLibros = () => {
   let books = [
@@ -36,7 +36,6 @@ export const RenderizarLibros = () => {
     "9789751022226",
     "9783753176529",
     "9781250249296",
-    // Resto de los libros...
   ];
 
   const [bookInfo, setBookInfo] = useState([]);
@@ -47,7 +46,10 @@ export const RenderizarLibros = () => {
   const randomNumberInRange = (min, max) => {
     const random = Math.random() * (max - min) + min;
     const rounded = Math.round(random);
-    const formatted = rounded.toLocaleString('es', { useGrouping: true, maximumFractionDigits: 0 });
+    const formatted = rounded.toLocaleString("es", {
+      useGrouping: true,
+      maximumFractionDigits: 0,
+    });
     return formatted;
   };
   useEffect(() => {
@@ -75,7 +77,7 @@ export const RenderizarLibros = () => {
             author: author,
             image_url: image_url,
             categoria: categoria,
-            precio : randomNumberInRange(50000, 200000)
+            precio: randomNumberInRange(50000, 200000),
           };
         })
       );
@@ -94,7 +96,7 @@ export const RenderizarLibros = () => {
     setAllProducts([...allProducts, product]);
   };
   const handlelibroClick = (libro) => {
-    console.log("click")
+    console.log("click");
     setSelectedlibro(libro);
   };
   return (
@@ -111,19 +113,21 @@ export const RenderizarLibros = () => {
 
       <Carrusel bookInfo={bookInfo} />
       {filteredBooks.length > 0 && (
-        <div className="container" >
+        <div className="container">
           <div className="row">
             {filteredBooks.map((book, index) => (
               <div key={index} className="col-md-3">
                 <div className="card">
                   <div className="card-body">
                     <h5 className="card-title">Titulo: {book.title}</h5>
-                    {book.image_url ? (
-                      
-                      <img src={book.image_url} alt="" onClick={() => handlelibroClick(book)} />
-                    ) : (
-                      <span>No hay imagen disponible</span>
-                    )}
+                    <Link to={`/libro/${book.index}`}>
+                      {" "}
+                      {book.image_url ? (
+                        <img src={book.image_url} alt="" />
+                      ) : (
+                        <span>No hay imagen disponible</span>
+                      )}
+                    </Link>
                     <p className="card-text">Autor: {book.author}</p>
                     <p>Precio : ${book.precio}</p>
                   </div>
