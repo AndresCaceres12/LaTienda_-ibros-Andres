@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import "./PaymentForm.css";
+import "./PagoTargeta.css";
+import Modal from "./Modal";
 
-const PaymentForm = () => {
+const PagoTargeta = () => {
   const [cardNumber, setCardNumber] = useState("");
   const [cardHolder, setCardHolder] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
@@ -9,6 +10,7 @@ const PaymentForm = () => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState("");
+  const [showModal, setShowModal] = useState(false);
 
   const handleCardNumberChange = (e) => {
     setCardNumber(e.target.value);
@@ -41,7 +43,6 @@ const PaymentForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Lógica para procesar el pago o enviar los datos del formulario
     console.log("Payment submitted");
     console.log("Card Number:", cardNumber);
     console.log("Card Holder:", cardHolder);
@@ -51,7 +52,7 @@ const PaymentForm = () => {
     console.log("City:", city);
     console.log("Zip Code:", zipCode);
 
-    // Restablecer los campos del formulario
+    setShowModal(true);
     setCardNumber("");
     setCardHolder("");
     setExpiryDate("");
@@ -59,6 +60,9 @@ const PaymentForm = () => {
     setAddress("");
     setCity("");
     setZipCode("");
+  };
+  const handleCloseModal = () => {
+    setShowModal(false);
   };
 
   return (
@@ -147,11 +151,12 @@ const PaymentForm = () => {
           </div>
         </div>
         <button className="submit-button" type="submit">
-        Pagar
+          Pagar
         </button>
       </form>
+      {showModal && <Modal onClose={handleCloseModal} />}
     </div>
   );
 };
 
-export default PaymentForm;
+export default PagoTargeta;

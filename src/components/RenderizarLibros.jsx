@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
-import Narvab from "./Narvab";
+import Navbar from "./Navbar";
 import "./RenderizarLibros.css";
 import { Carrusel } from "./Carrusel";
 import { Link, useNavigate } from "react-router-dom";
 
-export const RenderizarLibros = ({bookInfo}) => {
- 
-
-
+export const RenderizarLibros = ({ bookInfo, setTotal, total }) => {
   const [categorias, setCategorias] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [EsconderCarro, setEscondercarro] = useState(false);
   const [selectedlibro, setSelectedlibro] = useState(null);
-  
-  const navigate = useNavigate();
 
-  
+  const navigate = useNavigate();
 
   const filteredBooks = categorias.length
     ? bookInfo.filter((book) => book.categoria === categorias)
@@ -24,11 +19,11 @@ export const RenderizarLibros = ({bookInfo}) => {
   const onAddProduct = (product) => {
     setAllProducts([...allProducts, product]);
   };
-  
+
   const handlelibroClick = (libro) => {
     setSelectedlibro(libro);
   };
-  
+
   useEffect(() => {
     if (selectedlibro) {
       navigate(`/libro/${bookInfo.indexOf(selectedlibro)}`);
@@ -37,7 +32,9 @@ export const RenderizarLibros = ({bookInfo}) => {
 
   return (
     <div>
-      <Narvab
+      <Navbar
+        setTotal={setTotal}
+        total={total}
         allProducts={allProducts}
         setAllProducts={setAllProducts}
         bookInfo={bookInfo}
@@ -48,7 +45,7 @@ export const RenderizarLibros = ({bookInfo}) => {
       />
 
       <Carrusel bookInfo={bookInfo} />
-      
+
       {filteredBooks.length > 0 && (
         <div className="container">
           <div className="row">

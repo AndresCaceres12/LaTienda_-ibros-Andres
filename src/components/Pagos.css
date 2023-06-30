@@ -1,0 +1,78 @@
+.button {
+    background-color: green;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 15px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+    }
+    
+    .button:hover {
+    transform: scale(1.1);
+    }
+    
+    .button:active {
+    transform: scale(0.9);
+    }
+    
+    .icon {
+    margin-right: 10px;
+    }
+    .buttonNequi {
+      background-color: aliceblue;
+        color: white;
+        border: none;
+        border-radius: 10px;
+        padding: 15px;
+      
+        align-items: center;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        transition: transform 0.3s;
+        }
+        .buttonNequi:hover {
+            transform: scale(1.1);
+            }
+            
+            .buttonNequi:active {
+            transform: scale(0.9);
+            }
+            .ContenedorButtons {
+              display: flex;
+              gap: 20px;
+             
+            }
+            .payment-description {
+                font-size: 18px;
+                color: #333;
+                margin-bottom: 20px;
+                background-color: #F0F0F0;
+                padding: 20px;
+                border-radius: 20px;
+              }
+
+
+              .payment-description {
+                color: black;
+                font-family: Arial, sans-serif;
+                font-size: 20px;
+                text-align: center;
+                }
+                
+                .payment-description ul {
+                list-style-type: none;
+                }
+                
+                .payment-description li {
+                margin: 10px;
+                }
+              body{
+              
+                background-image: linear-gradient(to bottom, #77dd77, white);
+              }

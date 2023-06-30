@@ -1,0 +1,66 @@
+.contenedorApartado {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "MiFuente", sans-serif;
+  padding: 30px;
+  gap: 100px;
+  background-color: #f5f5f5;
+  border-radius: 9px;
+  margin-bottom: 30px;
+}
+
+.titulo {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.titulo h2 {
+  align-items: center;
+  margin: 0 auto;
+  font-family: "Lucida Grande", Verdana, Geneva, Helvetica, Arial, sans-serif;
+}
+
+.imagenLibro {
+  flex: 0.5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgb(122, 119, 119);
+  border-radius: 10px;
+  padding: 20px;
+  box-sizing: border-box;
+  box-shadow: 4px 15px 25px rgba(0, 0, 0, 0.5);
+}
+
+.imagenLibro img {
+  max-width: 500px;
+  height: auto;
+}
+
+.contenedorDescripcion {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 20px;
+}
+@media (max-width: 700px) {
+  .contenedorApartado {
+    display: flex;
+    flex-direction: column;
+  }
+  .imagenLibro img {
+    max-width: 200px;
+    height: auto;
+  }
+}
+@font-face {
+  font-family: "MiFuente";
+  src: url("../fonts/mifuente.ttf") format("truetype");
+}

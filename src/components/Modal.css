@@ -1,0 +1,30 @@
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-content {
+  background-color: white;
+  border: 2px solid green;
+  padding: 20px;
+  text-align: center;
+}
+
+.modal-content img {
+  width: 100px;
+}
+.modal-content button {
+  background-color: rgb(39, 190, 39);
+  border: none;
+  color: white;
+}
+.modal-content button:hover {
+  background-color: rgb(30, 180, 35);
+}

@@ -1,0 +1,54 @@
+.nequi-payment {
+    max-width: 500px;
+    background-color: #2CC0D1;
+    padding: 20px;
+    border-radius: 10px;
+    color: #fff;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+ 
+  }
+  
+  .nequi-payment h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+    
+  }
+  .form-group label{
+width: 30%;
+  }
+  .form-label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+  
+  .form-input {
+ 
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+  }
+  
+  .payment-button {
+    background-color: #f0ad4e;
+    color: #fff;
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .payment-button:hover {
+    background-color: #ee9e40;
+  }
+  

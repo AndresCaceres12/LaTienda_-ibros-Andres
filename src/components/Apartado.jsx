@@ -1,11 +1,12 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React from "react";
+import { useParams } from "react-router-dom";
+import NavbarOpcional from "./NavbarOpcional";
+import "./Apartado.css";
 
 const Apartado = (props) => {
-  const { bookInfo } = props
+  const { bookInfo } = props;
   const { index } = useParams();
 
-console.log(props)
   const selectedBook = bookInfo[index];
 
   if (!selectedBook) {
@@ -13,13 +14,50 @@ console.log(props)
   }
 
   return (
-    <div>
-      <h2>{selectedBook.title}</h2>
-      <p>Autor: {selectedBook.author}</p>
-      <img src={selectedBook.image_url} alt={selectedBook.title} />
-      <p>Precio: ${selectedBook.precio}</p>
-    </div>
+    <>
+      <div className="titulo">
+        <NavbarOpcional />
+        <h2>{selectedBook.title}</h2>
+      </div>
+
+      <div className="contenedorApartado">
+        <div className="imagenLibro">
+          <img
+            width={"300px"}
+            src={selectedBook.image_url}
+            alt={selectedBook.title}
+          />
+        </div>
+        <div className="contenedorDescripcion">
+          <p>
+            {" "}
+            <b>Autor:</b> {selectedBook.author}
+          </p>
+          <p>
+            {" "}
+            <b>Editor:</b> {selectedBook.publisher}
+          </p>
+          <p>
+            {" "}
+            <b>Fecha de publicación:</b> {selectedBook.publish_date}
+          </p>
+          <p>
+            {" "}
+            <b>Número de páginas:</b>{" "}
+            {selectedBook.number_of_pages?.toString() || "No disponible"}
+          </p>
+          <p>
+            {" "}
+            <b>Precio: $</b> {selectedBook.precio}
+          </p>
+          <p>
+            {" "}
+            <b>Categoría:</b> {selectedBook.categoria}
+          </p>
+        </div>
+      </div>
+    </>
   );
-}
+};
 
 export default Apartado;

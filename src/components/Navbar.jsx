@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import "./Narvab.css";
+import "./Navbar.css";
 
 const ProductosSeleccionados = ({
   allProducts,
   toggleMostrarProductos,
   bookInfo,
+  total,
+  setTotal,
 }) => {
   const [Cart, setCart] = useState(allProducts);
-  const [total, setTotal] = useState(0);
 
   const SumarTotal = () => {
     let total = 0;
@@ -76,12 +77,14 @@ const ProductosSeleccionados = ({
   );
 };
 
-const Narvab = ({
+const Navbar = ({
   bookInfo,
   setCategorias,
   categorias,
   allProducts,
   setAllProducts,
+  total,
+  setTotal,
 }) => {
   const [lista, setLista] = useState(false);
   const [categoriasList, setCategoriasList] = useState(false);
@@ -131,7 +134,7 @@ const Narvab = ({
 
   return (
     <>
-      <div className="ContieneNarvab">
+      <div className="ContieneNavbar">
         <h3>Libros con Andres</h3>
         <ul>
           <Link
@@ -166,6 +169,8 @@ const Narvab = ({
 
       {mostrarProductos && (
         <ProductosSeleccionados
+          total={total}
+          setTotal={setTotal}
           allProducts={allProducts}
           toggleMostrarProductos={toggleMostrarProductos}
         />
@@ -190,4 +195,4 @@ const Narvab = ({
   );
 };
 
-export default Narvab;
+export default Navbar;
