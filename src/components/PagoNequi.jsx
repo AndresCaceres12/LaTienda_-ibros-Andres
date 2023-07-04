@@ -29,6 +29,9 @@ const PagoNequi = ({ total, setTotal }) => {
       console.log("Realizando pago por Nequi");
       console.log("Monto: ", total);
       console.log("Número de teléfono: ", phoneNumber);
+      console.log("direccion :" , address)
+      console.log("Ciudad :", city)
+      console.log("Codigo postal :" ,zipCode)
       setErrorMessage("");
       setShowModal(true);
     } else {
