@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import "./PagoNequi.css";
 import Modal from "./Modal";
 const PagoNequi = ({ total, setTotal }) => {
- 
   const [phoneNumber, setPhoneNumber] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [zipCode, setZipCode] = useState("");
   const [showModal, setShowModal] = useState(false);
- 
 
   const handlePhoneNumberChange = (event) => {
     setPhoneNumber(event.target.value);
@@ -57,7 +55,6 @@ const PagoNequi = ({ total, setTotal }) => {
             id="amount"
             className="form-input"
             value={total}
-            
             readOnly
           />
         </div>
@@ -108,13 +105,11 @@ const PagoNequi = ({ total, setTotal }) => {
           </div>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
-        <button className="payment-button">
+        <button className="payment-button" type="submit">
           Realizar Pago
         </button>
       </div>
-      {showModal && ( 
-        <Modal onClose={handleCloseModal} /> 
-      )}
+      {showModal && <Modal onClose={handleCloseModal} />}
     </form>
   );
 };
