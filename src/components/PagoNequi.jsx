@@ -108,7 +108,7 @@ const PagoNequi = ({ total, setTotal }) => {
           </div>
           {errorMessage && <p className="error-message">{errorMessage}</p>}
         </div>
-        <button className="payment-button" type="submit">
+        <button className="payment-button">
           Realizar Pago
         </button>
       </div>
