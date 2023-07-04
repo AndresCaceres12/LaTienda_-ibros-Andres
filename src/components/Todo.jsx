@@ -37,6 +37,10 @@ function Todo({ total, setTotal }) {
     "9789751022226",
     "9783753176529",
     "9781250249296",
+    "9780545599764",
+    "9781577598985",
+    "9780370332284",
+    "9780345342966"
   ];
 
   const [bookInfo, setBookInfo] = useState([]);
@@ -81,7 +85,7 @@ function Todo({ total, setTotal }) {
             author: author,
             image_url: image_url,
             categoria: categoria,
-            precio: book.price?.value || randomNumberInRange(50000, 200000),
+            precio: book.price?.value || randomNumberInRange(50000, 150000),
             publisher: publisher,
             publish_date: publish_date,
             number_of_pages: number_of_pages,
