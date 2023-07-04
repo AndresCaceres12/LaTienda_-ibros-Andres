@@ -55,7 +55,7 @@ export const RenderizarLibros = ({ bookInfo, setTotal, total }) => {
                   <div className="card-body">
                     <h5 className="card-title">Titulo: {book.title}</h5>
                     <Link
-                      to={`/libro/${index}`}
+                      to={`/libro/${index}`} 
                       onClick={() => handlelibroClick(book)}
                     >
                       {book.image_url ? (

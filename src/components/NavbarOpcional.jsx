@@ -17,8 +17,6 @@ const NavbarOpcional = () => {
           </Link>
         </ul>
       </div>
-     
-      <div></div>
     </div>
   )
 }

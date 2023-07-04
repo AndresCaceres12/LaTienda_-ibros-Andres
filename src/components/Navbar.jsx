@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+import { FaRemoveFormat } from "react-icons/fa";
 
 const ProductosSeleccionados = ({
   allProducts,
@@ -9,6 +10,7 @@ const ProductosSeleccionados = ({
   bookInfo,
   total,
   setTotal,
+  setAllProducts
 }) => {
   const [Cart, setCart] = useState(allProducts);
 
@@ -25,6 +27,7 @@ const ProductosSeleccionados = ({
 
   useEffect(() => {
     SumarTotal();
+    FaRemoveFormat()
   }, [Cart]);
 
   const removeFromCart = (product) => {
@@ -32,9 +35,16 @@ const ProductosSeleccionados = ({
 
     if (index !== -1) {
       const newCart = [...Cart];
-      newCart.splice(index, 1);
+      newCart.splice(index,1);
       setCart(newCart);
+      setAllProducts(newCart)
+      
+    }else{
+      const newCart = [...Cart];
+      newCart.splice[""]
+      setCart(newCart)
     }
+    
   };
 
   return (
@@ -172,6 +182,7 @@ const Navbar = ({
           total={total}
           setTotal={setTotal}
           allProducts={allProducts}
+          setAllProducts={setAllProducts}
           toggleMostrarProductos={toggleMostrarProductos}
         />
       )}

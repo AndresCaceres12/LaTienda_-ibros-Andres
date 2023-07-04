@@ -3,8 +3,8 @@ import { useParams } from "react-router-dom";
 import NavbarOpcional from "./NavbarOpcional";
 import "./Apartado.css";
 
-const Apartado = (props) => {
-  const { bookInfo } = props;
+const Apartado = ({ bookInfo }) => {
+  
   const { index } = useParams();
 
   const selectedBook = bookInfo[index];
