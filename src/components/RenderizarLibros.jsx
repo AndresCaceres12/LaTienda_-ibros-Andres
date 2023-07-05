@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import Navbar from "./Navbar";
 import "./RenderizarLibros.css";
 import { Carrusel } from "./Carrusel";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const RenderizarLibros = ({ bookInfo, setTotal, total }) => {
   const [categorias, setCategorias] = useState([]);
   const [allProducts, setAllProducts] = useState([]);
   const [EsconderCarro, setEscondercarro] = useState(false);
-  const [selectedlibro, setSelectedlibro] = useState(null);
 
-  const navigate = useNavigate();
 
   const filteredBooks = categorias.length
     ? bookInfo.filter((book) => book.categoria === categorias)
@@ -20,15 +18,6 @@ export const RenderizarLibros = ({ bookInfo, setTotal, total }) => {
     setAllProducts([...allProducts, product]);
   };
 
-  const handlelibroClick = (libro) => {
-    setSelectedlibro(libro);
-  };
-
-  useEffect(() => {
-    if (selectedlibro) {
-      navigate(`/libro/${bookInfo.indexOf(selectedlibro)}`);
-    }
-  }, [selectedlibro, navigate, bookInfo]);
 
   return (
     <div>
@@ -55,8 +44,8 @@ export const RenderizarLibros = ({ bookInfo, setTotal, total }) => {
                   <div className="card-body">
                     <h5 className="card-title">Titulo: {book.title}</h5>
                     <Link
-                      to={`/libro/${index}`} 
-                      onClick={() => handlelibroClick(book)}
+                      to={`/libro/${index}`}
+                     
                     >
                       {book.image_url ? (
                         <img src={book.image_url} alt="" />
