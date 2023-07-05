@@ -15,8 +15,14 @@
 
 .add-to-cart-btn:hover {
   background-color: #8dbefa;
+  transform: scale(1.1);
 }
 
+
+
+.add-to-cart-btn:active {
+  transform: scale(0.9);
+}
 .row {
   width: 100%;
 }

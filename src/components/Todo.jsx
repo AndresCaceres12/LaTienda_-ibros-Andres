@@ -89,9 +89,6 @@ function Todo({ total, setTotal }) {
             publisher: publisher,
             publish_date: publish_date,
             number_of_pages: number_of_pages,
-            publisher: publisher,
-            publish_date: publish_date,
-            number_of_pages: number_of_pages,
             description: description,
           };
         })
