@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Pago from "./Pagos";
 import { useEffect, useState } from "react";
 
-function Todo({ total, setTotal }) {
+function Todo({ total, setTotal,allProducts,setAllProducts }) {
   let books = [
     "9780140328721",
     "9780064404990",
@@ -45,9 +45,10 @@ function Todo({ total, setTotal }) {
 
   const [bookInfo, setBookInfo] = useState([]);
 
+
   const randomNumberInRange = (min, max) => {
-    const random = Math.random() * (max - min) + min;
-    const rounded = Math.round(random);
+    const random = Math.random() * (max - min) + min; 
+    const rounded = Math.round(random); 
     const formatted = rounded.toLocaleString("es", {
       useGrouping: true,
       maximumFractionDigits: 0,
@@ -56,6 +57,7 @@ function Todo({ total, setTotal }) {
   };
 
   useEffect(() => {
+    
     const fetchBooks = async () => {
       const bookData = await Promise.all(
         books.map(async (isbn) => {
@@ -94,7 +96,7 @@ function Todo({ total, setTotal }) {
         })
       );
 
-      setBookInfo(bookData.filter((book) => Object.keys(book).length > 0));
+      setBookInfo(bookData.filter((book) => Object.keys(book).length > 0)); 
     };
 
     fetchBooks();
@@ -110,12 +112,15 @@ function Todo({ total, setTotal }) {
               bookInfo={bookInfo}
               total={total}
               setTotal={setTotal}
+              setAllProducts={setAllProducts}
+              allProducts={allProducts}
             />
           }
         />
         <Route
           path="/libro/:index"
           element={<Apartado bookInfo={bookInfo} />}
+         
         />
         <Route
           path="/Pagos"

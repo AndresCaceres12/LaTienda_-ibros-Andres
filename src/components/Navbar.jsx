@@ -3,10 +3,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { Carrito } from "./Carrito";
-const Navbar = ({
+import { Navbar, Text } from "@nextui-org/react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+const NavbarInicio = ({
   bookInfo,
   setCategorias,
-  categorias,
+  cantidadCarrito,
+  onAddProduct,
+      setCantidadCarrito,
+      CantidadDeProductos,
   allProducts,
   setAllProducts,
   total,
@@ -15,6 +22,7 @@ const Navbar = ({
   const [lista, setLista] = useState(false);
   const [categoriasList, setCategoriasList] = useState(false);
   const [mostrarProductos, setMostrarProductos] = useState(false);
+
 
   useEffect(() => {
     setCategoriasList(false);
@@ -35,7 +43,7 @@ const Navbar = ({
 
   const filtrarPorCategoria = (categoria) => {
     if (categoria === "Todos los libros") {
-      setCategorias(""); 
+      setCategorias("");
     } else {
       setCategorias(categoria);
     }
@@ -60,28 +68,34 @@ const Navbar = ({
 
   return (
     <>
-      <div className="ContieneNavbar">
-        <h3>Libros con Andres</h3>
-        <ul>
-          <Link
+      
+      <Navbar isBordered variant="sticky" className="ContieneNavbar">
+        <Navbar.Brand className="LogoNombre">
+        <img src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png" alt="Logo de libros" width="32" /> 
+           <Text b color="inherit" hideIn="xs">
+            Libros Con Andres
+          </Text>
+        </Navbar.Brand>
+        <Navbar.Content hideIn="xs">
+          <Navbar.Link >  <Link
             onClick={VolverAincio}
             id="Inicio"
-            className="BotonesDeInicio"
+      
             to="/"
           >
             Inicio
-          </Link>
-          <li className="BotonesDeInicio" onClick={mostrarCategorias}>
-            Categorias
-          </li>
-          <li className="BotonesDeInicio" onClick={mostrarAutores}>
-            Autores
-          </li>
-          <li className="BotonesDeInicio" onClick={toggleMostrarProductos}>
-            carrito
-          </li>
-        </ul>
-      </div>
+          </Link></Navbar.Link>
+          <Navbar.Link isActive  onClick={mostrarCategorias} >
+           Categorias
+          </Navbar.Link>
+          <Navbar.Link isActive onClick={mostrarAutores} >Autores</Navbar.Link>
+          <Navbar.Link isActive onClick={toggleMostrarProductos} className="ButtonCart">
+  <FontAwesomeIcon icon={faShoppingCart} />
+  <span className="contadorCarrito">{cantidadCarrito}</span>
+</Navbar.Link>
+
+        </Navbar.Content>
+      </Navbar>
 
       {lista && (
         <div className="custom-list-container1">
@@ -95,8 +109,12 @@ const Navbar = ({
 
       {mostrarProductos && (
         <Carrito
+        cantidadCarrito={cantidadCarrito}
+      setCantidadCarrito={setCantidadCarrito}
           total={total}
           setTotal={setTotal}
+          onAddProduct={onAddProduct}
+          CantidadDeProductos={CantidadDeProductos}
           allProducts={allProducts}
           setAllProducts={setAllProducts}
           toggleMostrarProductos={toggleMostrarProductos}
@@ -107,11 +125,7 @@ const Navbar = ({
         <div className="custom-list-container">
           <ul className="custom-list">
             {uniqueCategories.map((categoria, index) => (
-              <li
-                key={index}
-                onClick={() => filtrarPorCategoria(categoria)}
-                className={categorias === categoria ? "active" : ""}
-              >
+              <li key={index} onClick={() => filtrarPorCategoria(categoria)}>
                 {categoria}
               </li>
             ))}
@@ -122,4 +136,4 @@ const Navbar = ({
   );
 };
 
-export default Navbar;
+export default NavbarInicio;

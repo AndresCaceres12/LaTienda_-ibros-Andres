@@ -8,6 +8,7 @@ import { FaRemoveFormat } from "react-icons/fa";
   allProducts,
   toggleMostrarProductos,
   total,
+  CantidadDeProductos,
   setTotal,
   setAllProducts
 }) => {
@@ -26,31 +27,28 @@ import { FaRemoveFormat } from "react-icons/fa";
 
   useEffect(() => {
     SumarTotal();
-    FaRemoveFormat()
+    FaRemoveFormat();
+    CantidadDeProductos();
+    
   }, [Cart]);
-
   const removeFromCart = (product) => {
     const index = Cart.findIndex((item) => item.id === product.id);
-
+  
     if (index !== -1) {
       const newCart = [...Cart];
-      newCart.splice(index,1);
+      newCart.splice(index, 1);
       setCart(newCart);
-      setAllProducts(newCart)
-      
-    }else{
-      const newCart = [...Cart];
-      newCart.splice[""]
-      setCart(newCart)
+      setAllProducts(newCart);
+      setCantidadCarrito((prevCantidad) => prevCantidad - 1);
     }
-    
   };
-
+  
   return (
     <div className="CarritoContainer">
       <div className="NavbarCarro">
         <h4>Carrito</h4>
-        <h3 onClick={toggleMostrarProductos}>x</h3>
+        <h3 onClick={() => { toggleMostrarProductos(); CantidadDeProductos(); }}>x</h3>
+
       </div>
 
       <ul className="Carrito-list">
@@ -73,7 +71,7 @@ import { FaRemoveFormat } from "react-icons/fa";
         <div className="FooterContainer">
           <div className="TotalPrecio">
             <h5>total a pagar </h5>
-            <h5 style={{ color: "orange" }}>{total.toLocaleString()}</h5>
+            <h5 style={{ color: "orange" }}>{total.toLocaleString()}</h5> 
           </div>
           {allProducts.length > 0 && (
             <Link to="/Pagos">

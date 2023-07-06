@@ -25,7 +25,7 @@ const PagoNequi = ({ total, setTotal }) => {
   };
 
   const handlePayment = () => {
-    if (amount !== "" && phoneNumber !== "") {
+    if (amount !== "" && phoneNumber !== "" && address !== "" ) {
       console.log("Realizando pago por Nequi");
       console.log("Monto: ", total);
       console.log("Número de teléfono: ", phoneNumber);

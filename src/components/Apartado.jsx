@@ -8,7 +8,7 @@ const Apartado = ({ bookInfo }) => {
   const { index } = useParams();
 
   const selectedBook = bookInfo[index];
-
+  //objeto
   if (!selectedBook) {
     return <div>Libro no encontrado</div>;
   }
