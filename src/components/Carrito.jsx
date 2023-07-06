@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { FaRemoveFormat } from "react-icons/fa";
+import { Button } from "@nextui-org/react";
 
  export const Carrito = ({
   allProducts,
@@ -42,7 +43,11 @@ import { FaRemoveFormat } from "react-icons/fa";
       setCantidadCarrito((prevCantidad) => prevCantidad - 1);
     }
   };
-  
+  const eliminarTodo = () => {
+    setCart([]);
+    setAllProducts([]);
+    setCantidadCarrito(0);
+  }
   return (
     <div className="CarritoContainer">
       <div className="NavbarCarro">
@@ -65,19 +70,26 @@ import { FaRemoveFormat } from "react-icons/fa";
             </div>
           </li>
         ))}
+         <Button color="error" id="EliminarTodo" onClick={eliminarTodo}>Eliminar todo</Button>
       </ul>
 
       <footer>
         <div className="FooterContainer">
           <div className="TotalPrecio">
-            <h5>total a pagar </h5>
+            <h5>Productos  </h5>
             <h5 style={{ color: "orange" }}>{total.toLocaleString()}</h5> 
           </div>
           {allProducts.length > 0 && (
-            <Link to="/Pagos">
-              <button>pagar</button>
+            <div>
+              <Link to="/Pagos">
+              <Button>pagar</Button>
+
             </Link>
+           
+            </div>
+            
           )}
+          
         </div>
       </footer>
     </div>

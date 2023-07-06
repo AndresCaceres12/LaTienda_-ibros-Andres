@@ -1,4 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 import NavbarInicio from "./Navbar";
 import "./RenderizarLibros.css";
@@ -16,21 +17,28 @@ export const RenderizarLibros = ({
   const [categorias, setCategorias] = useState([]);
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
   const [EsconderCarro, setEscondercarro] = useState(false);
+  const [mensajes, setMensajes] = useState([]);
 
   const filteredBooks = categorias.length
     ? bookInfo.filter((book) => book.categoria === categorias)
     : bookInfo;
+    
+  const onAddProduct = useCallback((product) => {
+    setAllProducts((prevProducts) => [...prevProducts, product]);
+    setCantidadCarrito((prevCantidad) => prevCantidad + 1);
+    const newMensaje = { id: Date.now(), texto: 'Producto añadido al carrito' };
+    setMensajes((prevMensajes) => [...prevMensajes, newMensaje]);
 
-    const onAddProduct = useCallback((product) => {
-      setAllProducts((prevProducts) => [...prevProducts, product]);
-      setCantidadCarrito((prevCantidad) => prevCantidad + 1);
-    }, [setAllProducts, setCantidadCarrito]);
-    useEffect(() => {
-      setCantidadCarrito(allProducts.length);
-    }, [allProducts]);
-    
-    
-  const CantidadDeProductos = ()=>{
+    setTimeout(() => {
+      setMensajes((prevMensajes) => prevMensajes.filter((mensaje) => mensaje.id !== newMensaje.id));
+    }, 800);
+  }, [setAllProducts, setCantidadCarrito]);
+
+  useEffect(() => {
+    setCantidadCarrito(allProducts.length);
+  }, [allProducts]);
+
+  const CantidadDeProductos = () => {
     setCantidadCarrito(allProducts.length);
   }
 
@@ -83,6 +91,14 @@ export const RenderizarLibros = ({
           </div>
         )}
       </div>
+      <TransitionGroup className="mensaje-container">
+  {mensajes.map((mensaje) => (
+    <CSSTransition key={mensaje.id} timeout={300} classNames="mensaje-item">
+      <p className="mensaje">{mensaje.texto}</p>
+    </CSSTransition>
+  ))}
+</TransitionGroup>
+
     </div>
   );
 };
