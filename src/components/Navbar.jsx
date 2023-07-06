@@ -12,17 +12,18 @@ const NavbarInicio = ({
   setCategorias,
   cantidadCarrito,
   onAddProduct,
-      setCantidadCarrito,
-      CantidadDeProductos,
+  setCantidadCarrito,
+  CantidadDeProductos,
   allProducts,
   setAllProducts,
   total,
   setTotal,
+  Cantidad,
+  setCantidad,
 }) => {
   const [lista, setLista] = useState(false);
   const [categoriasList, setCategoriasList] = useState(false);
   const [mostrarProductos, setMostrarProductos] = useState(false);
-
 
   useEffect(() => {
     setCategoriasList(false);
@@ -68,32 +69,38 @@ const NavbarInicio = ({
 
   return (
     <>
-      
       <Navbar isBordered variant="sticky" className="ContieneNavbar">
         <Navbar.Brand className="LogoNombre">
-        <img src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png" alt="Logo de libros" width="32" /> 
-           <Text b color="inherit" hideIn="xs">
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png"
+            alt="Logo de libros"
+            width="32"
+          />
+          <Text b color="inherit" hideIn="xs">
             Libros Con Andres
           </Text>
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
-          <Navbar.Link >  <Link
-            onClick={VolverAincio}
-            id="Inicio"
-      
-            to="/"
-          >
-            Inicio
-          </Link></Navbar.Link>
-          <Navbar.Link isActive  onClick={mostrarCategorias} >
-           Categorias
+          <Navbar.Link>
+            {" "}
+            <Link onClick={VolverAincio} id="Inicio" to="/">
+              Inicio
+            </Link>
           </Navbar.Link>
-          <Navbar.Link isActive onClick={mostrarAutores} >Autores</Navbar.Link>
-          <Navbar.Link isActive onClick={toggleMostrarProductos} className="ButtonCart">
-  <FontAwesomeIcon icon={faShoppingCart} />
-  <span className="contadorCarrito">{cantidadCarrito}</span>
-</Navbar.Link>
-
+          <Navbar.Link isActive onClick={mostrarCategorias}>
+            Categorias
+          </Navbar.Link>
+          <Navbar.Link isActive onClick={mostrarAutores}>
+            Autores
+          </Navbar.Link>
+          <Navbar.Link
+            isActive
+            onClick={toggleMostrarProductos}
+            className="ButtonCart"
+          >
+            <FontAwesomeIcon icon={faShoppingCart} />
+            <span className="contadorCarrito">{cantidadCarrito}</span>
+          </Navbar.Link>
         </Navbar.Content>
       </Navbar>
 
@@ -109,8 +116,10 @@ const NavbarInicio = ({
 
       {mostrarProductos && (
         <Carrito
-        cantidadCarrito={cantidadCarrito}
-      setCantidadCarrito={setCantidadCarrito}
+        Cantidad={Cantidad}
+        setCantidad={setCantidad}
+          cantidadCarrito={cantidadCarrito}
+          setCantidadCarrito={setCantidadCarrito}
           total={total}
           setTotal={setTotal}
           onAddProduct={onAddProduct}

@@ -21,12 +21,12 @@
   height: 10%;
   padding: 10px;
   background-color: #f5f5f5;
-  
-  
 }
+
 .NavbarCarro h3:hover {
   cursor: pointer;
 }
+
 .CarritoContainer {
   font-family: Arial, Helvetica, sans-serif;
   z-index: 2;
@@ -70,7 +70,6 @@
   box-shadow: 0 15px 25px rgba(70, 68, 68, 0.5);
   color: black;
   padding: 8px;
-
 }
 
 .ContenedorCard {
@@ -94,19 +93,17 @@
   box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
   overflow-y: auto;
   justify-content: space-between;
-padding: 10px;
-
+  padding: 10px;
 }
-#EliminarTodo{
- position: fixed;
- top: 480px;
+#EliminarTodo {
+  position: fixed;
+  top: 480px;
 }
 .FooterContainer Button {
-padding: 7px;
+  padding: 7px;
   width: 100%;
 }
 .TotalPrecio {
-  
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid black;
@@ -190,7 +187,6 @@ padding: 7px;
 }
 
 .ButtonCart:hover {
-  
   cursor: pointer;
 }
 
@@ -225,24 +221,34 @@ padding: 7px;
   }
 }
 .i {
-  
-
   padding: 0px;
   border-radius: 5px;
 
   position: fixed;
   right: 29px;
-font-size: 28px;
+  font-size: 28px;
 }
-  
-  .i:hover {
 
+.i:hover {
   transform: scale(1.1);
   cursor: pointer;
-  }
+}
 
-  .LogoNombre{
-    gap: 30px;
-    font-family: 'Merriweather', serif;
-    font-size: 40px;
-  }
+.LogoNombre {
+  gap: 30px;
+  font-family: "Merriweather", serif;
+  font-size: 40px;
+}
+.LaCantidad {
+  display: flex;
+}
+.Cantidades {
+  border: 1px black solid;
+  padding: 2px 5px;
+}
+.Cantidades:hover {
+  border: 1px black solid;
+  padding: 2px 5px;
+}#CambiarCantidad:hover{
+  cursor: pointer;
+} 

@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition, TransitionGroup } from "react-transition-group";
 
 import NavbarInicio from "./Navbar";
 import "./RenderizarLibros.css";
@@ -13,6 +13,8 @@ export const RenderizarLibros = ({
   total,
   allProducts,
   setAllProducts,
+  Cantidad,
+  setCantidad,
 }) => {
   const [categorias, setCategorias] = useState([]);
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
@@ -22,17 +24,25 @@ export const RenderizarLibros = ({
   const filteredBooks = categorias.length
     ? bookInfo.filter((book) => book.categoria === categorias)
     : bookInfo;
-    
-  const onAddProduct = useCallback((product) => {
-    setAllProducts((prevProducts) => [...prevProducts, product]);
-    setCantidadCarrito((prevCantidad) => prevCantidad + 1);
-    const newMensaje = { id: Date.now(), texto: 'Producto añadido al carrito' };
-    setMensajes((prevMensajes) => [...prevMensajes, newMensaje]);
 
-    setTimeout(() => {
-      setMensajes((prevMensajes) => prevMensajes.filter((mensaje) => mensaje.id !== newMensaje.id));
-    }, 800);
-  }, [setAllProducts, setCantidadCarrito]);
+  const onAddProduct = useCallback(
+    (product) => {
+      setAllProducts((prevProducts) => [...prevProducts, product]);
+      setCantidadCarrito((prevCantidad) => prevCantidad + 1);
+      const newMensaje = {
+        id: Date.now(),
+        texto: "Producto añadido al carrito",
+      };
+      setMensajes((prevMensajes) => [...prevMensajes, newMensaje]);
+
+      setTimeout(() => {
+        setMensajes((prevMensajes) =>
+          prevMensajes.filter((mensaje) => mensaje.id !== newMensaje.id)
+        );
+      }, 800);
+    },
+    [setAllProducts, setCantidadCarrito]
+  );
 
   useEffect(() => {
     setCantidadCarrito(allProducts.length);
@@ -40,13 +50,15 @@ export const RenderizarLibros = ({
 
   const CantidadDeProductos = () => {
     setCantidadCarrito(allProducts.length);
-  }
+  };
 
   return (
     <div>
       <NavbarInicio
-      cantidadCarrito={cantidadCarrito}
-      setCantidadCarrito={setCantidadCarrito}
+       Cantidad={Cantidad}
+       setCantidad={setCantidad}
+        cantidadCarrito={cantidadCarrito}
+        setCantidadCarrito={setCantidadCarrito}
         setTotal={setTotal}
         total={total}
         allProducts={allProducts}
@@ -55,7 +67,6 @@ export const RenderizarLibros = ({
         CantidadDeProductos={CantidadDeProductos}
         categorias={categorias}
         setCategorias={setCategorias}
- 
         setMostrarCarrito={setEscondercarro}
       />
 
@@ -67,7 +78,7 @@ export const RenderizarLibros = ({
                 <div key={index} className="col-md-3">
                   <div className="card">
                     <div className="card-body">
-                      <h5 className="card-title">Titulo: {book.title}</h5>
+                      <h5 className="card-title">{book.title}</h5>
                       <Link to={`/libro/${index}`}>
                         {book.image_url ? (
                           <img src={book.image_url} alt="" />
@@ -80,10 +91,15 @@ export const RenderizarLibros = ({
                       <p>Precio : ${book.precio}</p>
                     </div>
 
-                    <Button onClick={() => { onAddProduct(book); CantidadDeProductos(); }} variant="contained">
-  Añadir al carrito
-</Button>
-
+                    <Button
+                      onClick={() => {
+                        onAddProduct(book);
+                        CantidadDeProductos();
+                      }}
+                      variant="contained"
+                    >
+                      Añadir al carrito
+                    </Button>
                   </div>
                 </div>
               ))}
@@ -92,13 +108,16 @@ export const RenderizarLibros = ({
         )}
       </div>
       <TransitionGroup className="mensaje-container">
-  {mensajes.map((mensaje) => (
-    <CSSTransition key={mensaje.id} timeout={300} classNames="mensaje-item">
-      <p className="mensaje">{mensaje.texto}</p>
-    </CSSTransition>
-  ))}
-</TransitionGroup>
-
+        {mensajes.map((mensaje) => (
+          <CSSTransition
+            key={mensaje.id}
+            timeout={300}
+            classNames="mensaje-item"
+          >
+            <p className="mensaje">{mensaje.texto}</p>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
     </div>
   );
 };

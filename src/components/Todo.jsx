@@ -5,7 +5,7 @@ import Footer from "./Footer";
 import Pago from "./Pagos";
 import { useEffect, useState } from "react";
 
-function Todo({ total, setTotal,allProducts,setAllProducts }) {
+function Todo({ total, setTotal, allProducts, setAllProducts }) {
   let books = [
     "9780140328721",
     "9780064404990",
@@ -40,15 +40,14 @@ function Todo({ total, setTotal,allProducts,setAllProducts }) {
     "9780545599764",
     "9781577598985",
     "9780370332284",
-    "9780345342966"
+    "9780345342966",
   ];
 
   const [bookInfo, setBookInfo] = useState([]);
-
-
+const [Cantidad, setCantidad] = useState(1)
   const randomNumberInRange = (min, max) => {
-    const random = Math.random() * (max - min) + min; 
-    const rounded = Math.round(random); 
+    const random = Math.random() * (max - min) + min;
+    const rounded = Math.round(random);
     const formatted = rounded.toLocaleString("es", {
       useGrouping: true,
       maximumFractionDigits: 0,
@@ -57,7 +56,6 @@ function Todo({ total, setTotal,allProducts,setAllProducts }) {
   };
 
   useEffect(() => {
-    
     const fetchBooks = async () => {
       const bookData = await Promise.all(
         books.map(async (isbn) => {
@@ -88,6 +86,7 @@ function Todo({ total, setTotal,allProducts,setAllProducts }) {
             image_url: image_url,
             categoria: categoria,
             precio: book.price?.value || randomNumberInRange(50000, 150000),
+            cantidad : Cantidad,
             publisher: publisher,
             publish_date: publish_date,
             number_of_pages: number_of_pages,
@@ -96,12 +95,12 @@ function Todo({ total, setTotal,allProducts,setAllProducts }) {
         })
       );
 
-      setBookInfo(bookData.filter((book) => Object.keys(book).length > 0)); 
+      setBookInfo(bookData.filter((book) => Object.keys(book).length > 0));
     };
 
     fetchBooks();
   }, []);
-
+console.log(bookInfo)
   return (
     <>
       <Routes>
@@ -109,6 +108,8 @@ function Todo({ total, setTotal,allProducts,setAllProducts }) {
           path="/"
           element={
             <RenderizarLibros
+            Cantidad={Cantidad}
+            setCantidad={setCantidad}
               bookInfo={bookInfo}
               total={total}
               setTotal={setTotal}
@@ -120,7 +121,6 @@ function Todo({ total, setTotal,allProducts,setAllProducts }) {
         <Route
           path="/libro/:index"
           element={<Apartado bookInfo={bookInfo} />}
-         
         />
         <Route
           path="/Pagos"
