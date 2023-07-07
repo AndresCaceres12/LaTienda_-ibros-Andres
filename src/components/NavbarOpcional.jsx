@@ -7,8 +7,8 @@ import "./Navbar.css";
 const NavbarOpcional = () => {
   return (
     <div>
-      <Navbar isBordered variant="sticky" className="ContieneNavbar">
-        <Navbar.Brand className="LogoNombre">
+      <Navbar style={{position:"fixed"}} variant="sticky" className="ContieneNavbar">
+        <Navbar.Brand className="LogoNombre" >
           
           <img
             src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png"

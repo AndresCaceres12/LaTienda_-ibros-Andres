@@ -3,10 +3,12 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { Carrito } from "./Carrito";
-import { Navbar, Text } from "@nextui-org/react";
+import { Text } from "@nextui-org/react";
+import { Navbar } from "@nextui-org/react";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-
+import { Tooltip } from "@nextui-org/react";
 
 const NavbarInicio = ({
   bookInfo,
@@ -55,6 +57,7 @@ const NavbarInicio = ({
   const toggleMostrarProductos = () => {
     setMostrarProductos(!mostrarProductos);
   };
+
   const VolverAincio = () => {
     setMostrarProductos(false);
   };
@@ -70,43 +73,36 @@ const NavbarInicio = ({
 
   return (
     <>
-      <Navbar isBordered variant="sticky" className="ContieneNavbar">
+      <Navbar isBordered variant="sticky" style={{position:"fixed"}} className="ContieneNavbar">
         <Navbar.Brand className="LogoNombre">
-        
           <img
             src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png"
             alt="Logo de libros"
             width="32"
           />
-          <Text  h2
-        size={30}
-       
-        weight="bold">
-            Libros Con Andres
+          <Text b color="inherit" hideIn="xs">
+            <Text h2 size={30} weight="bold">
+              Libros Con Andres
+            </Text>
           </Text>
-        
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           <Navbar.Link>
-      
-            {" "}
             <Link onClick={VolverAincio} id="Inicio" to="/">
               Inicio
             </Link>
           </Navbar.Link>
-          <Navbar.Link isActive onClick={mostrarCategorias} style={{cursor:"pointer"}}>
+          <Navbar.Link isActive onClick={mostrarCategorias} style={{ cursor: "pointer" }}>
             Categorias
           </Navbar.Link>
-          <Navbar.Link isActive onClick={mostrarAutores} style={{cursor:"pointer"}}>
+          <Navbar.Link isActive onClick={mostrarAutores} style={{ cursor: "pointer" }}>
             Autores
           </Navbar.Link>
-          <Navbar.Link
-            isActive
-            onClick={toggleMostrarProductos}
-            className="ButtonCart"
-          >
-            <FontAwesomeIcon icon={faShoppingCart} />
-            <span className="contadorCarrito">{cantidadCarrito}</span>
+          <Navbar.Link isActive onClick={toggleMostrarProductos} className="ButtonCart">
+            <Tooltip placement="bottom" content="Carrito" color="invert">
+              <FontAwesomeIcon icon={faShoppingCart} />
+              <span className="contadorCarrito">{cantidadCarrito}</span>
+            </Tooltip>
           </Navbar.Link>
         </Navbar.Content>
       </Navbar>
@@ -123,8 +119,8 @@ const NavbarInicio = ({
 
       {mostrarProductos && (
         <Carrito
-        Cantidad={Cantidad}
-        setCantidad={setCantidad}
+          Cantidad={Cantidad}
+          setCantidad={setCantidad}
           cantidadCarrito={cantidadCarrito}
           setCantidadCarrito={setCantidadCarrito}
           total={total}

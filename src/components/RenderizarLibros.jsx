@@ -65,11 +65,14 @@ export const RenderizarLibros = ({
     speed: 500,
     slidesToShow: filteredBooks.length > 4 ? 4 : filteredBooks.length, // Cambiar esta opción
     slidesToScroll: 4,
-  };
 
+  };
+ 
   return (
     <div>
-      <NavbarInicio
+     {filteredBooks.length > 0 && (
+          <div >
+            <NavbarInicio
         Cantidad={Cantidad}
         setCantidad={setCantidad}
         cantidadCarrito={cantidadCarrito}
@@ -84,6 +87,8 @@ export const RenderizarLibros = ({
         setCategorias={setCategorias}
         setMostrarCarrito={setEscondercarro}
       />
+          </div>
+        )}
 
       <div>
         {filteredBooks.length < 1 && (

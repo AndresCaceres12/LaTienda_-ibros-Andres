@@ -5,131 +5,30 @@
   font-weight: normal;
   font-style: normal;
 }
-.NavbarCarro {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Work Sans", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    Roboto, "Helvetica Neue", Arial, sans-serif;
-  box-sizing: border-box;
-  box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
-  z-index: 9999;
-  position: fixed;
-
-  right: 0;
-  width: 30%;
-  height: 10%;
-  padding: 10px;
-  background-color: #f5f5f5;
-}
-
-.NavbarCarro h3:hover {
-  cursor: pointer;
-}
-
-.CarritoContainer {
-  font-family: Arial, Helvetica, sans-serif;
-  z-index: 2;
-  position: fixed;
-  top: 10%;
-  right: 0;
-  width: 30%;
-  height: 72%;
-  background-color: white;
-  overflow-y: auto;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-}
-.CarritoContainer p {
-  cursor: pointer;
-  font-size: 15px;
-}
-.DescripcionBook {
-  display: flex;
-  flex-direction: column;
-  width: 80%;
-}
-.CarritoContainer p:hover {
-  margin-top: 0;
-  transform: scale(1.1);
-  border-radius: 20px;
-  height: 21px;
-}
-.Carrito-list {
-  margin-top: 50px;
-  padding: 3px;
-  list-style: none;
-  padding: 20px;
-}
-.Carrito-list li {
-  justify-content: space-between;
-  margin-bottom: 10px;
-  background-color: #fffdfd;
-  border-radius: 20px;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(70, 68, 68, 0.5);
-  color: black;
-  padding: 8px;
-}
-
-.ContenedorCard {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  gap: 30px;
-  font-size: 12px;
-}
-.FooterContainer {
-  z-index: 2;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  top: 80%;
-  bottom: 0;
-  width: 30%;
-  height: 20%;
-  background-color: #f5f5f5;
-  box-sizing: border-box;
-  box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
-  overflow-y: auto;
-  justify-content: space-between;
-  padding: 10px;
-}
-#EliminarTodo {
-  position: fixed;
-  top: 480px;
-}
-.FooterContainer Button {
-  padding: 7px;
-  width: 100%;
-}
-.TotalPrecio {
-  display: flex;
-  justify-content: space-between;
-  border-bottom: 1px solid black;
-}
 
 .custom-list-container {
   position: absolute;
   left: 60%;
+  top: 80px;
   z-index: 9999;
-  position: fixed;
-  background-color: rgb(56, 56, 56);
+  position: absolute;
+  background-color: rgb(255, 255, 255);
   width: 400px;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-  color: white;
+ 
 }
 .custom-list-container1 {
   position: absolute;
   left: 70%;
+  margin-top: 80px;
   z-index: 9999;
-  background-color: rgb(56, 56, 56);
+  background-color: rgb(255, 255, 255);
   width: 300px;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
-  color: white;
-  position: fixed;
+ 
+ 
 }
 
 .custom-list {
@@ -148,8 +47,10 @@
   text-decoration: none;
 }
 .custom-list :hover {
-  background-color: #3a4646;
+  background-color: #cfd3d3;
   cursor: pointer;
+  box-sizing: border-box;
+  box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
   color: #000000;
 }
 
@@ -188,6 +89,10 @@
 
 .ButtonCart:hover {
   cursor: pointer;
+}
+.slider-item {
+  /* Estilos adicionales para los elementos del slider */
+  color: black;
 }
 
 @media (max-width: 700px) {

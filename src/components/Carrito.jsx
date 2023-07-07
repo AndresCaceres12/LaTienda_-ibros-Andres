@@ -3,7 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { Button } from "@nextui-org/react";
-
+import "./Carrito.css"
 export const Carrito = ({
   allProducts,
   toggleMostrarProductos,
@@ -28,7 +28,7 @@ export const Carrito = ({
 
     setTotal(total);
   };
-
+  console.log(total);
   useEffect(() => {
     SumarTotal();
     CantidadDeProductos();
@@ -113,7 +113,12 @@ export const Carrito = ({
               </div>
             </li>
           ))}
-          <Button size="md" id="EliminarTodo" onClick={eliminarTodo}  style={{backgroundColor:"#f1f2f3",color :"black"}} >
+          <Button
+            size="md"
+            id="EliminarTodo"
+            onClick={eliminarTodo}
+            style={{ backgroundColor: "#f1f2f3", color: "black" }}
+          >
             Eliminar todo
           </Button>
         </ul>
@@ -126,8 +131,8 @@ export const Carrito = ({
           </div>
           {Cart.length > 0 && (
             <div>
-              <Link to="/Pagos">
-                <Button>pagar</Button>
+              <Link to={"/Pagos"}>
+                <button  className="submit-button" >Proceder al pago</button>
               </Link>
             </div>
           )}

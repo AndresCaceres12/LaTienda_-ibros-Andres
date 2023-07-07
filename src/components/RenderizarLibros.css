@@ -1,32 +1,17 @@
 .container {
   margin-bottom: 20px;
   margin-top: 30px;
+  font-family: "Merriweather", serif;
 }
-
 .card-body:hover {
   box-sizing: border-box;
   box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
 }
-
 .card {
-  margin-bottom: 30px;
-  font-family: "Merriweather", serif;
-  font-size: 18px;
-}
-
-.card-title {
-  font-size: 17px;
-}
-
-.row {
+ margin-bottom: 30px;
+}.row {
   width: 100%;
-  padding:  30px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.contadorCarrito {
+}.contadorCarrito {
   background-color: red;
   color: white;
   font-size: 12px;
@@ -75,34 +60,25 @@
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
-
-.slick-prev:before,
-.slick-next:before {
-  color: black;
+.row{
+  padding: 50px;
 }
-
-@media (max-width: 768px) {
-  .row {
-    padding: 10px;
+.card{
+  width: 300px;
+  margin-top: 40px;
   }
-
-  .card {
-    max-width: 100%;
+  .slider-item{
+    margin: 0;
   }
-}
-
-@media (max-width: 680px) {
-  .row {
-    padding: 5px;
-  }
-.card img {
-  width: 100%;
-}
-  .slider-container {
-    max-width: 100%;
-  flex-direction: column;
-  }
+  .slick-prev,
+.slick-next {
+  color: black !important;
 }
 .Cargando{
-  height: 213px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+}.slick-prev:before,
+.slick-next:before {
+  color: black;
 }

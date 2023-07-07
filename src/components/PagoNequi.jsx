@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./PagoNequi.css";
 import Modal from "./Modal";
+import { Input } from "@nextui-org/react";
 const PagoNequi = ({ total, setTotal }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -23,7 +24,7 @@ const PagoNequi = ({ total, setTotal }) => {
   const handleZipCodeChange = (e) => {
     setZipCode(e.target.value);
   };
-
+console.log(total)
   const handlePayment = () => {
     if (amount !== "" && phoneNumber !== "" && address !== "" ) {
       console.log("Realizando pago por Nequi");
@@ -53,13 +54,10 @@ const PagoNequi = ({ total, setTotal }) => {
         <h2>Realizar Pago por Nequi</h2>
         <div className="form-group">
           <label htmlFor="amount">Monto:</label>
-          <input
-            type="text"
-            id="amount"
-            className="form-input"
-            value={total}
-            readOnly
-          />
+       
+          <Input disabled placeholder="Disabled"  value={total}/>
+          <Input  bordered 
+          labelPlaceholder="Default" />
         </div>
         <div className="form-group">
           <label htmlFor="phoneNumber">Número de Teléfono:</label>

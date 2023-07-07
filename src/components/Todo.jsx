@@ -46,6 +46,7 @@ function Todo({ total, setTotal, allProducts, setAllProducts }) {
 
   const [bookInfo, setBookInfo] = useState([]);
 const [Cantidad, setCantidad] = useState(1)
+
   const randomNumberInRange = (min, max) => {
     const random = Math.random() * (max - min) + min;
     const rounded = Math.round(random);
@@ -103,11 +104,22 @@ const Precio = randomNumberInRange(50000, 120000);
 
     fetchBooks();
   }, []);
+  useEffect(() => {
+    localStorage.setItem("totalApagar", JSON.stringify(total));
+  }, [total]);
+  useEffect(() => {
+    const storedTotal = localStorage.getItem("totalApagar");
+    if (storedTotal) {
+      setTotal(JSON.parse(storedTotal));
+    }
+  }, []);
+    
 console.log(bookInfo)
 localStorage.setItem("Precio", JSON.stringify(bookInfo));
   return (
     <>
       <Routes>
+        
         <Route
           path="/"
           element={
@@ -131,8 +143,10 @@ localStorage.setItem("Precio", JSON.stringify(bookInfo));
           element={<Pago total={total} setTotal={setTotal} />}
         />
       </Routes>
+     {bookInfo.length > 1 && (
+ <Footer />
+     )}
      
-      <Footer />
     </>
   );
 }

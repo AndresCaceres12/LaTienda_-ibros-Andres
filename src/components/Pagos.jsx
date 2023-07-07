@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import PaymentForm from "./PagoTargeta";
 import NavbarOpcional from "./NavbarOpcional";
 import PagoNequi from "./PagoNequi";
@@ -18,11 +18,17 @@ const Pago = ({ total, setTotal }) => {
     setTargetForm(true);
     setNequiPago(false);
   };
-
+  useEffect(() => {
+   
+    const storedTotal = localStorage.getItem("totalApagar");
+    if (storedTotal) {
+      setTotal(JSON.parse(storedTotal));
+    }
+  }, []);
   return (
     <div>
-      <NavbarOpcional />
-      <div className="payment-description">
+  <NavbarOpcional/>
+      <div className="payment-description" style={{marginTop:"80px"}}>
         <p>Libros con Andres te ofrece 2 formas distintas de hacer el pago:</p>
         <ul>
           <li>
