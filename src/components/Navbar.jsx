@@ -7,6 +7,7 @@ import { Navbar, Text } from "@nextui-org/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 
+
 const NavbarInicio = ({
   bookInfo,
   setCategorias,
@@ -71,26 +72,32 @@ const NavbarInicio = ({
     <>
       <Navbar isBordered variant="sticky" className="ContieneNavbar">
         <Navbar.Brand className="LogoNombre">
+        
           <img
             src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png"
             alt="Logo de libros"
             width="32"
           />
-          <Text b color="inherit" hideIn="xs">
+          <Text  h2
+        size={30}
+       
+        weight="bold">
             Libros Con Andres
           </Text>
+        
         </Navbar.Brand>
         <Navbar.Content hideIn="xs">
           <Navbar.Link>
+      
             {" "}
             <Link onClick={VolverAincio} id="Inicio" to="/">
               Inicio
             </Link>
           </Navbar.Link>
-          <Navbar.Link isActive onClick={mostrarCategorias}>
+          <Navbar.Link isActive onClick={mostrarCategorias} style={{cursor:"pointer"}}>
             Categorias
           </Navbar.Link>
-          <Navbar.Link isActive onClick={mostrarAutores}>
+          <Navbar.Link isActive onClick={mostrarAutores} style={{cursor:"pointer"}}>
             Autores
           </Navbar.Link>
           <Navbar.Link

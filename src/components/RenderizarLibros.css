@@ -1,17 +1,32 @@
 .container {
   margin-bottom: 20px;
   margin-top: 30px;
-  font-family: "Merriweather", serif;
 }
+
 .card-body:hover {
   box-sizing: border-box;
   box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
 }
+
 .card {
- margin-bottom: 30px;
-}.row {
+  margin-bottom: 30px;
+  font-family: "Merriweather", serif;
+  font-size: 18px;
+}
+
+.card-title {
+  font-size: 17px;
+}
+
+.row {
   width: 100%;
-}.contadorCarrito {
+  padding:  30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contadorCarrito {
   background-color: red;
   color: white;
   font-size: 12px;
@@ -59,4 +74,35 @@
   border: 1px solid #ccc;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.slick-prev:before,
+.slick-next:before {
+  color: black;
+}
+
+@media (max-width: 768px) {
+  .row {
+    padding: 10px;
+  }
+
+  .card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 680px) {
+  .row {
+    padding: 5px;
+  }
+.card img {
+  width: 100%;
+}
+  .slider-container {
+    max-width: 100%;
+  flex-direction: column;
+  }
+}
+.Cargando{
+  height: 213px;
 }

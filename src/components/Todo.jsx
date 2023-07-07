@@ -5,6 +5,7 @@ import Footer from "./Footer";
 import Pago from "./Pagos";
 import { useEffect, useState } from "react";
 
+
 function Todo({ total, setTotal, allProducts, setAllProducts }) {
   let books = [
     "9780140328721",
@@ -38,7 +39,7 @@ function Todo({ total, setTotal, allProducts, setAllProducts }) {
     "9783753176529",
     "9781250249296",
     "9780545599764",
-    "9781577598985",
+   "9782709642521",
     "9780370332284",
     "9780345342966",
   ];
@@ -79,13 +80,14 @@ const [Cantidad, setCantidad] = useState(1)
           const publish_date = book.publish_date;
           const number_of_pages = book.number_of_pages;
           const description = book.description?.value;
+const Precio = randomNumberInRange(50000, 120000);
 
           return {
             title: title,
             author: author,
             image_url: image_url,
             categoria: categoria,
-            precio: book.price?.value || randomNumberInRange(50000, 150000),
+            precio: Precio,
             cantidad : Cantidad,
             publisher: publisher,
             publish_date: publish_date,
@@ -94,13 +96,15 @@ const [Cantidad, setCantidad] = useState(1)
           };
         })
       );
-
+     
+    
       setBookInfo(bookData.filter((book) => Object.keys(book).length > 0));
     };
 
     fetchBooks();
   }, []);
 console.log(bookInfo)
+localStorage.setItem("Precio", JSON.stringify(bookInfo));
   return (
     <>
       <Routes>
@@ -127,6 +131,7 @@ console.log(bookInfo)
           element={<Pago total={total} setTotal={setTotal} />}
         />
       </Routes>
+     
       <Footer />
     </>
   );

@@ -1,24 +1,38 @@
-import React from 'react'
+import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css"
+import { Navbar, Text } from "@nextui-org/react";
+
+import "./Navbar.css";
+
 const NavbarOpcional = () => {
   return (
     <div>
-       <div className="ContieneNavbar">
-        <h3>Libros con Andres</h3>
-        <ul>
-          <Link
-            // onClick={VolverAincio}
-            id="Inicio"
-            className="BotonesDeInicio"
-            to="/"
-          >
-            Inicio
-          </Link>
-        </ul>
-      </div>
+      <Navbar isBordered variant="sticky" className="ContieneNavbar">
+        <Navbar.Brand className="LogoNombre">
+          
+          <img
+            src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png"
+            alt="Logo de libros"
+            width="32"
+          />
+          <Text h2 size={30} weight="bold">
+            Libros Con Andres
+          </Text>
+        </Navbar.Brand>
+        <Navbar.Content hideIn="xs">
+          <Navbar.Link>
+            {" "}
+            <Link  id="Inicio" to="/">
+              Volver para comprar 
+            </Link>
+          </Navbar.Link>
+         
+          
+         
+        </Navbar.Content>
+      </Navbar>
     </div>
-  )
-}
+  );
+};
 
-export default NavbarOpcional
+export default NavbarOpcional;

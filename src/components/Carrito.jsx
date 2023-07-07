@@ -113,7 +113,7 @@ export const Carrito = ({
               </div>
             </li>
           ))}
-          <Button color="error" id="EliminarTodo" onClick={eliminarTodo}>
+          <Button size="md" id="EliminarTodo" onClick={eliminarTodo}  style={{backgroundColor:"#f1f2f3",color :"black"}} >
             Eliminar todo
           </Button>
         </ul>
