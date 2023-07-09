@@ -65,7 +65,22 @@ export const RenderizarLibros = ({
     speed: 500,
     slidesToShow: filteredBooks.length > 4 ? 4 : filteredBooks.length, // Cambiar esta opción
     slidesToScroll: 4,
-
+    responsive: [
+      {
+        breakpoint: 768, // Tamaño de pantalla en el que se aplicarán las siguientes opciones
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+      {
+        breakpoint: 480, // Tamaño de pantalla en el que se aplicarán las siguientes opciones
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+        },
+      },
+    ],
   };
  
   return (

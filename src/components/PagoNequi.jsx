@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./PagoNequi.css";
 import Modal from "./Modal";
 import { Input } from "@nextui-org/react";
-const PagoNequi = ({ total, setTotal }) => {
+const PagoNequi = ({ total, setTotal ,setAllProducts}) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const [address, setAddress] = useState("");
@@ -26,7 +26,7 @@ const PagoNequi = ({ total, setTotal }) => {
   };
 console.log(total)
   const handlePayment = () => {
-    if (amount !== "" && phoneNumber !== "" && address !== "" ) {
+    if (phoneNumber !== "" && address !== "" ) {
       console.log("Realizando pago por Nequi");
       console.log("Monto: ", total);
       console.log("Número de teléfono: ", phoneNumber);
@@ -55,47 +55,43 @@ console.log(total)
         <div className="form-group">
           <label htmlFor="amount">Monto:</label>
        
-          <Input disabled placeholder="Disabled"  value={total}/>
-          <Input  bordered 
-          labelPlaceholder="Default" />
+          <Input  placeholder="Disabled"  value={total}/>
+         
         </div>
         <div className="form-group">
           <label htmlFor="phoneNumber">Número de Teléfono:</label>
-          <input
-            type="text"
-            id="phoneNumber"
-            className="form-input"
-            value={phoneNumber}
-            onChange={handlePhoneNumberChange}
-            required
-          />
+      
+          <Input  
+          Placeholder="1234" 
+          value={phoneNumber}
+          onChange={handlePhoneNumberChange}
+          required/>
+          
         </div>
         <div className="form-group">
           <label htmlFor="address">DIRECCIÓN</label>
-          <input
-            type="text"
-            id="address"
-            value={address}
-            onChange={handleAddressChange}
-            placeholder="123 Street"
-            required
-          />
+       
+           <Input  
+         placeholder="123 Street"
+          value={address}
+          onChange={handleAddressChange}
+          required/>
         </div>
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="city">Ciudad</label>
-            <input
-              type="text"
-              id="city"
+            <Input
+             
               value={city}
               onChange={handleCityChange}
               placeholder="Gotica"
               required
             />
+            
           </div>
           <div className="form-group">
             <label htmlFor="zipCode">Codigo postal</label>
-            <input
+            <Input
               type="text"
               id="zipCode"
               value={zipCode}
@@ -110,7 +106,7 @@ console.log(total)
           Realizar Pago
         </button>
       </div>
-      {showModal && <Modal onClose={handleCloseModal} />}
+      {showModal && <Modal setAllProducts={setAllProducts} onClose={handleCloseModal}  />}
     </form>
   );
 };

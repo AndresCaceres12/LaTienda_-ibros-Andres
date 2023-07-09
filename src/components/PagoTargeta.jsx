@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./PagoTargeta.css";
 import Modal from "./Modal";
+import { Input } from "@mui/material";
 
-const PagoTargeta = () => {
+const PagoTargeta = ({setAllProducts}) => {
   const [cardNumber, setCardNumber] = useState("");
   const [cardHolder, setCardHolder] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
@@ -71,7 +72,7 @@ const PagoTargeta = () => {
       <form className="payment-form" onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="cardNumber">Numero de Targeta </label>
-          <input
+          <Input
             type="text"
             id="cardNumber"
             value={cardNumber}
@@ -82,7 +83,7 @@ const PagoTargeta = () => {
         </div>
         <div className="form-group">
           <label htmlFor="cardHolder">Titular de la tarjetar</label>
-          <input
+          <Input
             type="text"
             id="cardHolder"
             value={cardHolder}
@@ -94,7 +95,7 @@ const PagoTargeta = () => {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="expiryDate">Fecha de caducidad</label>
-            <input
+            <Input
               type="text"
               id="expiryDate"
               value={expiryDate}
@@ -105,7 +106,7 @@ const PagoTargeta = () => {
           </div>
           <div className="form-group">
             <label htmlFor="cvv">CVV</label>
-            <input
+            <Input
               type="text"
               id="cvv"
               value={cvv}
@@ -117,7 +118,7 @@ const PagoTargeta = () => {
         </div>
         <div className="form-group">
           <label htmlFor="address">DIRECCIÓN</label>
-          <input
+          <Input
             type="text"
             id="address"
             value={address}
@@ -129,7 +130,7 @@ const PagoTargeta = () => {
         <div className="form-row">
           <div className="form-group">
             <label htmlFor="city">Ciudad</label>
-            <input
+            <Input
               type="text"
               id="city"
               value={city}
@@ -140,7 +141,7 @@ const PagoTargeta = () => {
           </div>
           <div className="form-group">
             <label htmlFor="zipCode">Codigo postal</label>
-            <input
+            <Input
               type="text"
               id="zipCode"
               value={zipCode}
@@ -154,7 +155,7 @@ const PagoTargeta = () => {
           Pagar
         </button>
       </form>
-      {showModal && <Modal onClose={handleCloseModal} />}
+      {showModal && <Modal setAllProducts={setAllProducts} onClose={handleCloseModal} />}
     </div>
   );
 };

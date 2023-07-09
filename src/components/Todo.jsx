@@ -140,7 +140,9 @@ localStorage.setItem("Precio", JSON.stringify(bookInfo));
         />
         <Route
           path="/Pagos"
-          element={<Pago total={total} setTotal={setTotal} />}
+          element={<Pago  
+            setAllProducts={setAllProducts}
+            total={total} setTotal={setTotal} />}
         />
       </Routes>
      {bookInfo.length > 1 && (

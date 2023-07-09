@@ -5,7 +5,7 @@ import PagoNequi from "./PagoNequi";
 import { FaCreditCard } from "react-icons/fa";
 import "./Pagos.css";
 
-const Pago = ({ total, setTotal }) => {
+const Pago = ({ total, setTotal,setAllProducts }) => {
   const [targetForm, setTargetForm] = useState(true);
   const [nequiPago, setNequiPago] = useState(false);
 
@@ -57,8 +57,8 @@ const Pago = ({ total, setTotal }) => {
           alt="Logo de Nequi Colombia"
         />
       </div>
-      {targetForm && <PaymentForm />}
-      {nequiPago && <PagoNequi total={total} setTotal={setTotal} />}
+      {targetForm && <PaymentForm setAllProducts={setAllProducts} />}
+      {nequiPago && <PagoNequi  setAllProducts={setAllProducts} total={total} setTotal={setTotal} />}
     </div>
   );
 };
