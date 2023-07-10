@@ -6,7 +6,7 @@ const App = () => {
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
-    // Recuperar el valor de 'total' desde el localStorage al cargar la página
+    
     const storedTotal = localStorage.getItem("totalApagar");
     if (storedTotal) {
       setTotal(JSON.parse(storedTotal));

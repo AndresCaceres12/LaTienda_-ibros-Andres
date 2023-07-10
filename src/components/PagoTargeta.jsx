@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import "./PagoTargeta.css";
-import Modal from "./Modal";
-import { Input } from "@mui/material";
 
-const PagoTargeta = ({setAllProducts}) => {
+import { Input } from "@mui/material";
+import ConfirmacionCard from "./ConfirmacionCard";
+const PagoTargeta = ({setAllProducts, total}) => {
   const [cardNumber, setCardNumber] = useState("");
   const [cardHolder, setCardHolder] = useState("");
   const [expiryDate, setExpiryDate] = useState("");
@@ -62,7 +62,7 @@ const PagoTargeta = ({setAllProducts}) => {
     setCity("");
     setZipCode("");
   };
-  const handleCloseModal = () => {
+  const CerrarConfirmacionCard = () => {
     setShowModal(false);
   };
 
@@ -155,7 +155,7 @@ const PagoTargeta = ({setAllProducts}) => {
           Pagar
         </button>
       </form>
-      {showModal && <Modal setAllProducts={setAllProducts} onClose={handleCloseModal} />}
+     {showModal && <ConfirmacionCard  CerrarConfirmacionCard={CerrarConfirmacionCard} total={total} setAllProducts={setAllProducts}/>}
     </div>
   );
 };

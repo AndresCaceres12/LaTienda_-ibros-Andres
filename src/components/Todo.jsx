@@ -3,6 +3,7 @@ import { RenderizarLibros } from "./RenderizarLibros";
 import Apartado from "./Apartado";
 import Footer from "./Footer";
 import Pago from "./Pagos";
+import Modal from "./Modal";
 import { useEffect, useState } from "react";
 
 
@@ -127,6 +128,7 @@ localStorage.setItem("Precio", JSON.stringify(bookInfo));
             Cantidad={Cantidad}
             setCantidad={setCantidad}
               bookInfo={bookInfo}
+              setBookInfo={setBookInfo}
               total={total}
               setTotal={setTotal}
               setAllProducts={setAllProducts}
@@ -144,6 +146,10 @@ localStorage.setItem("Precio", JSON.stringify(bookInfo));
             setAllProducts={setAllProducts}
             total={total} setTotal={setTotal} />}
         />
+        <Route path="/Pago-Realizado"  
+        element={<Modal setAllProducts={setAllProducts}/>}
+        />
+
       </Routes>
      {bookInfo.length > 1 && (
  <Footer />

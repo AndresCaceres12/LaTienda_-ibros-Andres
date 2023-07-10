@@ -62,13 +62,15 @@
 }
 .row{
   padding: 50px;
+ margin-top: 40px;
 }
 .card{
-  width: 300px;
-  margin-top: 40px;
+  max-width: 300px;
+;
   }
   .slider-item{
-    margin: 0;
+    max-width: 300px;
+    font-family: "Work Sans", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   }
   .slick-prev,
 .slick-next {
@@ -82,3 +84,13 @@
 .slick-next:before {
   color: black;
 }
+.slider-container {
+  padding: 20px; 
+  }
+  .Subtitulo{
+  border-bottom: 1px black solid;
+  margin: 0;
+font-size: 18 px; 
+font-family: "Source Serif Pro", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      
+  }

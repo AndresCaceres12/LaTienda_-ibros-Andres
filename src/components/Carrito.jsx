@@ -68,7 +68,8 @@ export const Carrito = ({
     }
   };
   return (
-    <div className="CarritoContainer">
+    <div className="containerCARD">
+       <div className="CarritoContainer">
       <div className="NavbarCarro">
         <h4>Carrito</h4>
         <h3
@@ -139,5 +140,7 @@ export const Carrito = ({
         </div>
       </footer>
     </div>
+    </div>
+   
   );
 };

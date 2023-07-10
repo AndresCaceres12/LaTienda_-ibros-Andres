@@ -10,6 +10,11 @@ import "./RenderizarLibros.css";
 import { Tooltip } from "@nextui-org/react";
 import { Loading } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
+import CardContent from '@mui/material/CardContent';
+import CardActions from '@mui/material/CardActions';
+import Typography from '@mui/material/Typography';
 export const RenderizarLibros = ({
   bookInfo,
   setTotal,
@@ -18,19 +23,19 @@ export const RenderizarLibros = ({
   setAllProducts,
   Cantidad,
   setCantidad,
+  setBookInfo
 }) => {
   const [categorias, setCategorias] = useState([]);
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
   const [EsconderCarro, setEscondercarro] = useState(false);
   const [mensajes, setMensajes] = useState([]);
 
-
   const filteredBooks = categorias.length
     ? bookInfo.filter((book) => book.categoria === categorias)
     : bookInfo;
-   
-    localStorage.setItem("userData", JSON.stringify(allProducts));
-    
+
+  localStorage.setItem("userData", JSON.stringify(allProducts));
+
   const onAddProduct = useCallback(
     (product) => {
       setAllProducts((prevProducts) => [...prevProducts, product]);
@@ -63,18 +68,21 @@ export const RenderizarLibros = ({
     dots: true,
     infinite: true,
     speed: 500,
-    slidesToShow: filteredBooks.length > 4 ? 4 : filteredBooks.length, // Cambiar esta opción
+    slidesToShow: filteredBooks.length > 4 ? 4 : filteredBooks.length,
     slidesToScroll: 4,
+   
     responsive: [
+    
       {
-        breakpoint: 768, // Tamaño de pantalla en el que se aplicarán las siguientes opciones
+        breakpoint: 800,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 2,
         },
       },
+
       {
-        breakpoint: 480, // Tamaño de pantalla en el que se aplicarán las siguientes opciones
+        breakpoint: 497,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -82,28 +90,29 @@ export const RenderizarLibros = ({
       },
     ],
   };
- 
+
   return (
     <div>
-     {filteredBooks.length > 0 && (
-          <div >
-            <NavbarInicio
-        Cantidad={Cantidad}
-        setCantidad={setCantidad}
-        cantidadCarrito={cantidadCarrito}
-        setCantidadCarrito={setCantidadCarrito}
-        setTotal={setTotal}
-        total={total}
-        allProducts={allProducts}
-        setAllProducts={setAllProducts}
-        bookInfo={bookInfo}
-        CantidadDeProductos={CantidadDeProductos}
-        categorias={categorias}
-        setCategorias={setCategorias}
-        setMostrarCarrito={setEscondercarro}
-      />
-          </div>
-        )}
+      {filteredBooks.length > 0 && (
+        <div>
+          <NavbarInicio
+          setBookInfo={setBookInfo}
+            Cantidad={Cantidad}
+            setCantidad={setCantidad}
+            cantidadCarrito={cantidadCarrito}
+            setCantidadCarrito={setCantidadCarrito}
+            setTotal={setTotal}
+            total={total}
+            allProducts={allProducts}
+            setAllProducts={setAllProducts}
+            bookInfo={bookInfo}
+            CantidadDeProductos={CantidadDeProductos}
+            categorias={categorias}
+            setCategorias={setCategorias}
+            setMostrarCarrito={setEscondercarro}
+          />
+        </div>
+      )}
 
       <div>
         {filteredBooks.length < 1 && (
@@ -113,14 +122,17 @@ export const RenderizarLibros = ({
         )}
 
         <div className="row">
+          
           {filteredBooks.length > 0 && (
-            <div className="slider-container">
+            <div>
+              <p className="Subtitulo">Novedades literarias</p>
+               <div className="slider-container">
               <Slider {...sliderSettings}>
                 {filteredBooks.map((book, index) => (
                   <div key={index} className="slider-item">
                     <div className="card">
                       <div className="card-body">
-                        <h5 className="card-title">{book.title}</h5>
+                        <b className="card-title">{book.title}</b>
                         <Link to={`/libro/${index}`}>
                           <Tooltip
                             content="Mas infromacion del libro"
@@ -156,6 +168,8 @@ export const RenderizarLibros = ({
                 ))}
               </Slider>
             </div>
+            </div>
+           
           )}
         </div>
 

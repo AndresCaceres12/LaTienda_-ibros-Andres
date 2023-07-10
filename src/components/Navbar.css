@@ -19,6 +19,8 @@
  
 }
 .custom-list-container1 {
+  max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: scroll;
   position: absolute;
   left: 70%;
   margin-top: 80px;
@@ -27,14 +29,19 @@
   width: 300px;
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.5);
+
  
- 
+}
+.custom-list-scroll {
+  max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+  overflow-y: scroll;
 }
 
 .custom-list {
   margin: 0;
   padding: 3px;
   list-style: none;
+  overflow: auto;
 }
 
 .custom-list li {
@@ -60,6 +67,7 @@
   gap: 40px;
   margin: 20px 30px;
   font-family: "Poppins";
+  border-bottom: none
 }
 
 .BotonesDeInicio {

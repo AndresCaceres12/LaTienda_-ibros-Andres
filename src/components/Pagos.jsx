@@ -1,11 +1,11 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import PaymentForm from "./PagoTargeta";
 import NavbarOpcional from "./NavbarOpcional";
 import PagoNequi from "./PagoNequi";
 import { FaCreditCard } from "react-icons/fa";
 import "./Pagos.css";
 
-const Pago = ({ total, setTotal,setAllProducts }) => {
+const Pago = ({ total, setTotal, setAllProducts }) => {
   const [targetForm, setTargetForm] = useState(true);
   const [nequiPago, setNequiPago] = useState(false);
 
@@ -19,7 +19,6 @@ const Pago = ({ total, setTotal,setAllProducts }) => {
     setNequiPago(false);
   };
   useEffect(() => {
-   
     const storedTotal = localStorage.getItem("totalApagar");
     if (storedTotal) {
       setTotal(JSON.parse(storedTotal));
@@ -27,8 +26,8 @@ const Pago = ({ total, setTotal,setAllProducts }) => {
   }, []);
   return (
     <div>
-  <NavbarOpcional/>
-      <div className="payment-description" style={{marginTop:"80px"}}>
+      <NavbarOpcional />
+      <div className="payment-description" style={{ marginTop: "80px" }}>
         <p>Libros con Andres te ofrece 2 formas distintas de hacer el pago:</p>
         <ul>
           <li>
@@ -57,8 +56,16 @@ const Pago = ({ total, setTotal,setAllProducts }) => {
           alt="Logo de Nequi Colombia"
         />
       </div>
-      {targetForm && <PaymentForm setAllProducts={setAllProducts} />}
-      {nequiPago && <PagoNequi  setAllProducts={setAllProducts} total={total} setTotal={setTotal} />}
+      {targetForm && (
+        <PaymentForm setAllProducts={setAllProducts} total={total} />
+      )}
+      {nequiPago && (
+        <PagoNequi
+          setAllProducts={setAllProducts}
+          total={total}
+          setTotal={setTotal}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,64 @@
+.modalConfirmacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.modal-contentConfirmacion {
+  background-color: #c8f7f3;
+  height: 430px;
+  padding: 20px;
+  width: 35%;
+  display: flex; /* Agregado */
+  flex-direction: column; /* Agregado */
+}
+.contenedorInfo {
+  background-color: #ffffff;
+  padding: 10px;
+}
+.contenedorInfo p {
+  margin-left: 0;
+  text-align: left;
+}
+.Tittle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.Tittle p {
+  cursor: pointer;
+}
+.subTittle {
+  font-size: 18px;
+  text-align: left;
+  color: #fc7da7;
+  margin: 0px 0px;
+
+  background-color: #ffffff;
+  padding: 8px;
+  padding-left: 10px;
+
+  border-bottom: #c8f7f3 solid 3px;
+}
+
+
+.button-confirmar {
+  background-color: #f76696;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s;
+  border-radius: 20px;
+}
+
+.button-confirmar:hover {
+  background-color: #fc84ae;
+
+}
