@@ -5,7 +5,7 @@ import "./Carrito.css";
 import { useState, useEffect } from "react";
 import { Tooltip } from "@nextui-org/react";
 import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { TrashFill } from "react-bootstrap-icons";
+import { Button } from "@mui/material";
 export const Carrito = ({
   allProducts,
   toggleMostrarProductos,
@@ -56,19 +56,7 @@ export const Carrito = ({
     setAllProducts([]);
   };
 
-  const Sumarcantidad = () => {
-    const final = Cantidad + 1;
-    setCantidad(final);
-  };
 
-  const Restarcantidad = () => {
-    if (Cantidad > 1) {
-      const final = Cantidad - 1;
-      setCantidad(final);
-    } else {
-      return Cantidad;
-    }
-  };
 
   return (
     <div className="containerCARD">
@@ -110,16 +98,16 @@ export const Carrito = ({
               </li>
             ))}
            
-              <span
-              className="Vaciar"
+              <Button variant="outlined" color="error"
+             
                 size="md"
                 id="EliminarTodo"
                 onClick={eliminarTodo}
-               style={{fontSize:"25px"}}
+             
               >
-               <TrashFill/>
-              </span>
-            
+             Vaciar carrito
+              </Button>
+                          
           </ul>
         </div>
         <footer>

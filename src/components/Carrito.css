@@ -51,10 +51,7 @@
   cursor: pointer;
   font-size: 15px;
 }
-.Vaciar {
-  cursor: pointer;
-  font-size: 15px;
-}
+
 .DescripcionBook {
   display: flex;
   flex-direction: column;
