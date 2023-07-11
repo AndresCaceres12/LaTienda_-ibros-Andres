@@ -19,11 +19,11 @@
  
 }
 .custom-list-container1 {
-  max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+  max-height: 300px; 
   overflow-y: scroll;
   position: absolute;
   left: 70%;
-  margin-top: 80px;
+  margin-top: 40px;
   z-index: 9999;
   background-color: rgb(255, 255, 255);
   width: 300px;
@@ -33,7 +33,7 @@
  
 }
 .custom-list-scroll {
-  max-height: 300px; /* Ajusta la altura máxima según tus necesidades */
+  max-height: 300px;
   overflow-y: scroll;
 }
 
@@ -96,7 +96,7 @@
   cursor: pointer;
 }
 .slider-item {
-  /* Estilos adicionales para los elementos del slider */
+
   color: black;
 }
 

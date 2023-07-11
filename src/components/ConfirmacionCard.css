@@ -17,8 +17,8 @@
   height: 430px;
   padding: 20px;
   width: 35%;
-  display: flex; /* Agregado */
-  flex-direction: column; /* Agregado */
+  display: flex; 
+  flex-direction: column; 
 }
 .contenedorInfo {
   background-color: #ffffff;
