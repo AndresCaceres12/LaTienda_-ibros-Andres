@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./ConfirmacionCard.css";
-
-import Modal from "./Modal";
 import { Link } from "react-router-dom";
 
-function ConfirmacionCard({ total, setAllProducts ,CerrarConfirmacionCard}) {
+function ConfirmacionCard({ total, CerrarConfirmacionCard }) {
   const [showModal, setShowModal] = useState(false);
   const [codigoGenerado, setCodigoGenerado] = useState("");
   useEffect(() => {
@@ -16,7 +14,6 @@ function ConfirmacionCard({ total, setAllProducts ,CerrarConfirmacionCard}) {
       setCodigoGenerado(nuevoCodigo);
       localStorage.setItem("referencia", nuevoCodigo);
     }
-   
   }, []);
 
   function generarCodigo() {
@@ -31,15 +28,13 @@ function ConfirmacionCard({ total, setAllProducts ,CerrarConfirmacionCard}) {
     return referencia;
   }
 
-
   const fechaActual = new Date();
   const Mostrar = () => {
-
     setShowModal(true);
-    
+
     let referencia = localStorage.getItem("referencia");
-referencia = generarCodigo()
-localStorage.setItem("referencia", referencia);
+    referencia = generarCodigo();
+    localStorage.setItem("referencia", referencia);
   };
 
   return (
@@ -49,7 +44,7 @@ localStorage.setItem("referencia", referencia);
           <h3>Detalle del movimiento </h3>
           <p onClick={CerrarConfirmacionCard}> X</p>
         </div>
-        
+
         <div className="contenedorInfo">
           <p>
             Valor : <br />
@@ -59,24 +54,21 @@ localStorage.setItem("referencia", referencia);
             Compra en : <br />
             <b> Libros con Andres</b>
           </p>
-          <p> 
+          <p>
             <p>
-            Referencia :<br />
-            <b>{codigoGenerado}</b>
-          </p>
+              Referencia :<br />
+              <b>{codigoGenerado}</b>
+            </p>
             Fecha : <br />
             <b>{fechaActual.toDateString()}</b>
           </p>
-         
-         
         </div>
         <Link to={"/Pago-Realizado"}>
-        <button className="button-confirmarCard" onClick={Mostrar}>
-  Confirmar
-</button>
+          <button className="button-confirmarCard" onClick={Mostrar}>
+            Confirmar
+          </button>
         </Link>
       </div>
-      
     </div>
   );
 }

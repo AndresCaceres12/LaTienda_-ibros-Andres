@@ -8,7 +8,7 @@ function ConfirmacionP({
   total,
   setAllProducts,
   CerrarConfirmacion,
-  setConfirmacion,
+
 }) {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {

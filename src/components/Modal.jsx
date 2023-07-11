@@ -3,7 +3,7 @@ import "./Modal.css";
 import { Link } from "react-router-dom";
 
 function Modal({ onClose, setAllProducts }) {
-  const [EsperaConfir, setEsperaConfir] = useState(false)
+
   useEffect(() => {
     return () => {
       setAllProducts([]);

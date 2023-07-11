@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Navbar, Text } from "@nextui-org/react";
 import "./Navbar.css";
 import "./Carrito.css";
 import { useState, useEffect } from "react";

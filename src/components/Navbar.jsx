@@ -147,7 +147,7 @@ setCartProducts,
 
       {mostrarProductos && (
         <Carrito
-        cartProducts={cartProducts} // pasar el estado del carrito como prop
+        cartProducts={cartProducts} 
 setCartProducts={setCartProducts} 
           Cantidad={Cantidad}
           setCantidad={setCantidad}
