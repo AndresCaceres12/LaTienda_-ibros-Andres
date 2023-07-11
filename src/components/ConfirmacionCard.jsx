@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 
 function ConfirmacionCard({ total, setAllProducts ,CerrarConfirmacionCard}) {
   const [showModal, setShowModal] = useState(false);
+  const [codigoGenerado, setCodigoGenerado] = useState("");
   useEffect(() => {
     const codigoAlmacenado = localStorage.getItem("referencia");
     if (codigoAlmacenado) {
@@ -15,6 +16,7 @@ function ConfirmacionCard({ total, setAllProducts ,CerrarConfirmacionCard}) {
       setCodigoGenerado(nuevoCodigo);
       localStorage.setItem("referencia", nuevoCodigo);
     }
+   
   }, []);
 
   function generarCodigo() {
@@ -29,16 +31,17 @@ function ConfirmacionCard({ total, setAllProducts ,CerrarConfirmacionCard}) {
     return referencia;
   }
 
-  const [codigoGenerado, setCodigoGenerado] = useState("");
 
   const fechaActual = new Date();
   const Mostrar = () => {
-    setShowModal(true);
-  };
-  const handleCloseModal = () => {
-    setShowModal(!false);
 
+    setShowModal(true);
+    
+    let referencia = localStorage.getItem("referencia");
+referencia = generarCodigo()
+localStorage.setItem("referencia", referencia);
   };
+
   return (
     <div className="modalConfirmacionCard">
       <div className="modal-contentConfirmacionCard">
@@ -67,7 +70,7 @@ function ConfirmacionCard({ total, setAllProducts ,CerrarConfirmacionCard}) {
          
          
         </div>
-        <Link>
+        <Link to={"/Pago-Realizado"}>
         <button className="button-confirmarCard" onClick={Mostrar}>
   Confirmar
 </button>

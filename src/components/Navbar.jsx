@@ -25,7 +25,9 @@ const NavbarInicio = ({
   setTotal,
   Cantidad,
   setCantidad,
-  setBookInfo
+  setBookInfo,
+  cartProducts,// pasar el estado del carrito como prop
+setCartProducts,
 }) => {
   const [lista, setLista] = useState(false);
   const [categoriasList, setCategoriasList] = useState(false);
@@ -85,7 +87,7 @@ const NavbarInicio = ({
       <Navbar
         isBordered
         variant="sticky"
-        style={{ position: "fixed" }}
+        style={{ position: "fixed", zIndex: 1000} }
         className="ContieneNavbar"
       >
         <Navbar.Brand className="LogoNombre">
@@ -145,6 +147,8 @@ const NavbarInicio = ({
 
       {mostrarProductos && (
         <Carrito
+        cartProducts={cartProducts} // pasar el estado del carrito como prop
+setCartProducts={setCartProducts} 
           Cantidad={Cantidad}
           setCantidad={setCantidad}
           cantidadCarrito={cantidadCarrito}

@@ -7,7 +7,7 @@ import "./Navbar.css";
 const NavbarOpcional = () => {
   return (
     <div>
-      <Navbar style={{position:"fixed"}} variant="sticky" className="ContieneNavbar">
+      <Navbar style={{position:"fixed", zIndex: 1000}} variant="sticky" className="ContieneNavbar">
         <Navbar.Brand className="LogoNombre" >
           
           <img

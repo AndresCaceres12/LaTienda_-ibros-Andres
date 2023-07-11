@@ -47,9 +47,15 @@ const PagoNequi = ({ total, setTotal, setAllProducts }) => {
     handlePayment();
   };
 
-  const CerrarConfirmacion = () => {
-    setConfirmacion(false);
-  };
+ const setLocalstorage = value =>{
+  try{
+    setTotal(value)
+    window.localStorage.setItem("Totalpagar",value)
+  } catch(error){
+    console.log("no se pudo capturar")
+  }
+ }
+ setLocalstorage(total)
   return (
     <form onSubmit={handleSubmit}>
       <div className="nequi-payment">
@@ -57,7 +63,7 @@ const PagoNequi = ({ total, setTotal, setAllProducts }) => {
         <div className="form-group">
           <label htmlFor="amount">Monto:</label>
 
-          <Input placeholder="Disabled" value={total} />
+          <Input style={{color:"black"}} disabled placeholder="Disabled" value={total} />
         </div>
         <div className="form-group">
           <label htmlFor="phoneNumber">Número de Teléfono:</label>
@@ -108,6 +114,7 @@ const PagoNequi = ({ total, setTotal, setAllProducts }) => {
       </div>
       {mostrarConfirmacion && (
         <ConfirmacionP
+
           CerrarConfirmacion={() => setMostrarConfirmacion(false)}
           setAllProducts={setAllProducts}
           total={total}

@@ -78,10 +78,7 @@
   position: relative;
   border-bottom: 2px solid transparent;
 }
-.ContieneNavbar h3 {
-  margin: 18px auto;
-  font-family: "Montserrat", sans-serif;
-}
+
 .BotonesDeInicio:hover {
   border-bottom: 2px solid #dddcdc;
   cursor: pointer;

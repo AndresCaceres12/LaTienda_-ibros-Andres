@@ -10,11 +10,7 @@ import "./RenderizarLibros.css";
 import { Tooltip } from "@nextui-org/react";
 import { Loading } from "@nextui-org/react";
 import { Image } from "@nextui-org/react";
-import Card from '@mui/material/Card';
-import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
-import CardActions from '@mui/material/CardActions';
-import Typography from '@mui/material/Typography';
+
 export const RenderizarLibros = ({
   bookInfo,
   setTotal,
@@ -23,7 +19,7 @@ export const RenderizarLibros = ({
   setAllProducts,
   Cantidad,
   setCantidad,
-  setBookInfo
+  setBookInfo,
 }) => {
   const [categorias, setCategorias] = useState([]);
   const [cantidadCarrito, setCantidadCarrito] = useState(0);
@@ -33,8 +29,6 @@ export const RenderizarLibros = ({
   const filteredBooks = categorias.length
     ? bookInfo.filter((book) => book.categoria === categorias)
     : bookInfo;
-
-  localStorage.setItem("userData", JSON.stringify(allProducts));
 
   const onAddProduct = useCallback(
     (product) => {
@@ -70,9 +64,8 @@ export const RenderizarLibros = ({
     speed: 500,
     slidesToShow: filteredBooks.length > 4 ? 4 : filteredBooks.length,
     slidesToScroll: 4,
-   
+
     responsive: [
-    
       {
         breakpoint: 800,
         settings: {
@@ -96,7 +89,7 @@ export const RenderizarLibros = ({
       {filteredBooks.length > 0 && (
         <div>
           <NavbarInicio
-          setBookInfo={setBookInfo}
+            setBookInfo={setBookInfo}
             Cantidad={Cantidad}
             setCantidad={setCantidad}
             cantidadCarrito={cantidadCarrito}
@@ -122,54 +115,52 @@ export const RenderizarLibros = ({
         )}
 
         <div className="row">
-          
           {filteredBooks.length > 0 && (
             <div>
               <p className="Subtitulo">Novedades literarias</p>
-               <div className="slider-container">
-              <Slider {...sliderSettings}>
-                {filteredBooks.map((book, index) => (
-                  <div key={index} className="slider-item">
-                    <div className="card">
-                      <div className="card-body">
-                        <b className="card-title">{book.title}</b>
-                        <Link to={`/libro/${index}`}>
-                          <Tooltip
-                            content="Mas infromacion del libro"
-                            color="invert"
-                          >
-                            {book.image_url ? (
-                              <Image
-                                src={book.image_url}
-                                objectFit="none"
-                                alt="Default Image"
-                                width={200}
-                                height={300}
-                              />
-                            ) : (
-                              <span>No hay imagen disponible</span>
-                            )}
-                          </Tooltip>
-                        </Link>
-                        <p className="card-text">Autor: {book.author}</p>
-                        <p>Precio: ${book.precio}</p>
+              <div className="slider-container">
+                <Slider {...sliderSettings}>
+                  {filteredBooks.map((book, index) => (
+                    <div key={index} className="slider-item">
+                      <div className="card">
+                        <div className="card-body">
+                          <b className="card-title">{book.title}</b>
+                          <Link to={`/libro/${index}`}>
+                            <Tooltip
+                              content="Mas infromacion del libro"
+                              color="invert"
+                            >
+                              {book.image_url ? (
+                                <Image
+                                  src={book.image_url}
+                                  objectFit="none"
+                                  alt="Default Image"
+                                  width={200}
+                                  height={300}
+                                />
+                              ) : (
+                                <span>No hay imagen disponible</span>
+                              )}
+                            </Tooltip>
+                          </Link>
+                          <p className="card-text">Autor: {book.author}</p>
+                          <p>Precio: ${book.precio}</p>
+                        </div>
+                        <Button
+                          onClick={() => {
+                            onAddProduct(book);
+                            CantidadDeProductos();
+                          }}
+                          variant="contained"
+                        >
+                          Añadir al carrito
+                        </Button>
                       </div>
-                      <Button
-                        onClick={() => {
-                          onAddProduct(book);
-                          CantidadDeProductos();
-                        }}
-                        variant="contained"
-                      >
-                        Añadir al carrito
-                      </Button>
                     </div>
-                  </div>
-                ))}
-              </Slider>
+                  ))}
+                </Slider>
+              </div>
             </div>
-            </div>
-           
           )}
         </div>
 

@@ -18,12 +18,7 @@ const Pago = ({ total, setTotal, setAllProducts }) => {
     setTargetForm(true);
     setNequiPago(false);
   };
-  useEffect(() => {
-    const storedTotal = localStorage.getItem("totalApagar");
-    if (storedTotal) {
-      setTotal(JSON.parse(storedTotal));
-    }
-  }, []);
+
   return (
     <div>
       <NavbarOpcional />

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import "./PagoTargeta.css";
 
 import { Input } from "@mui/material";
@@ -65,7 +65,15 @@ const PagoTargeta = ({setAllProducts, total}) => {
   const CerrarConfirmacionCard = () => {
     setShowModal(false);
   };
-
+  const setLocalstorage = value =>{
+    try{
+      setTotal(value)
+      window.localStorage.setItem("Totalpagar",value)
+    } catch(error){
+      console.log("no se pudo capturar")
+    }
+   }
+   setLocalstorage(total)
   return (
     <div className="payment-form-container">
       <h2>Informacion de Pago</h2>
@@ -151,7 +159,7 @@ const PagoTargeta = ({setAllProducts, total}) => {
             />
           </div>
         </div>
-        <button className="submit-button" type="submit">
+        <button className="submit-button" >
           Pagar
         </button>
       </form>

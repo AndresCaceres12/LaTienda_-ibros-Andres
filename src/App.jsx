@@ -2,21 +2,22 @@ import React, { useEffect, useState } from "react";
 import Todo from "./components/Todo";
 
 const App = () => {
-  const [total, setTotal] = useState(0);
-  const [allProducts, setAllProducts] = useState([]);
+  const [total, setTotal] = useState(window.localStorage.getItem("Totalpagar"));
 
-  useEffect(() => {
-    
-    const storedTotal = localStorage.getItem("totalApagar");
-    if (storedTotal) {
-      setTotal(JSON.parse(storedTotal));
+  const [allProducts, setAllProducts] = useState(() => {
+    if (typeof window !== "undefined") {
+      const productosString = window.localStorage.getItem("ProductosCarrito2");
+      return productosString ? JSON.parse(productosString) : [];
     }
-  }, []);
+    return [];
+  });
 
   useEffect(() => {
-    // Guardar el valor de 'total' en el localStorage cada vez que cambie
-    localStorage.setItem("totalApagar", JSON.stringify(total));
-  }, [total]);
+    if (typeof window !== "undefined") {
+      const productosString = JSON.stringify(allProducts);
+      window.localStorage.setItem("ProductosCarrito2", productosString);
+    }
+  }, [allProducts]);
 
   return (
     <div>

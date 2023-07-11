@@ -4,7 +4,12 @@ import { Link } from "react-router-dom";
 import Modal from "./Modal";
 import Button from "@mui/material/Button";
 
-function ConfirmacionP({ total, setAllProducts,CerrarConfirmacion,setConfirmacion}) {
+function ConfirmacionP({
+  total,
+  setAllProducts,
+  CerrarConfirmacion,
+  setConfirmacion,
+}) {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     const codigoAlmacenado = localStorage.getItem("referencia");
@@ -34,8 +39,10 @@ function ConfirmacionP({ total, setAllProducts,CerrarConfirmacion,setConfirmacio
   const fechaActual = new Date();
   const Mostrar = () => {
     setShowModal(true);
+    let referencia = localStorage.getItem("referencia");
+    referencia = generarCodigo();
+    localStorage.setItem("referencia", referencia);
   };
-  
   const handleCloseModal = () => {
     setShowModal(false);
   };
@@ -45,7 +52,6 @@ function ConfirmacionP({ total, setAllProducts,CerrarConfirmacion,setConfirmacio
         <div className="Tittle">
           <h3>Detalle del movimiento </h3>
           <p onClick={CerrarConfirmacion}> X</p>
-
         </div>
         <h4 className="subTittle">Info de compra</h4>
         <div className="contenedorInfo">
@@ -67,12 +73,10 @@ function ConfirmacionP({ total, setAllProducts,CerrarConfirmacion,setConfirmacio
           </p>
         </div>
         <Link to={"/Pago-Realizado"}>
-        <button className="button-confirmar" onClick={Mostrar}>
-  Confirmar
-</button>
+          <button className="button-confirmar" onClick={Mostrar}>
+            Confirmar
+          </button>
         </Link>
-
-
       </div>
       {showModal && (
         <Modal setAllProducts={setAllProducts} onClose={handleCloseModal} />
