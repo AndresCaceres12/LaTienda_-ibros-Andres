@@ -162,3 +162,9 @@
 }#CambiarCantidad:hover{
   cursor: pointer;
 } 
+@media (max-width: 375px) {
+  
+  .ContieneNavbar ul {
+    padding: 0px;
+  }
+}

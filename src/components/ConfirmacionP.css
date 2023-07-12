@@ -63,3 +63,15 @@
   background-color: #fc84ae;
 
 }
+@media (max-width: 500px) {
+ .modal-contentConfirmacion{
+  width: 60%;
+  height: 80%;
+ }
+}
+@media (max-width: 375px) {
+  .modal-contentConfirmacion{
+   width: 70%;
+   height: 70%;
+  }
+ }

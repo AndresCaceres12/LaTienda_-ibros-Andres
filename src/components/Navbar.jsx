@@ -26,8 +26,8 @@ const NavbarInicio = ({
   Cantidad,
   setCantidad,
   setBookInfo,
-  cartProducts,// pasar el estado del carrito como prop
-setCartProducts,
+  cartProducts, 
+  setCartProducts,
 }) => {
   const [lista, setLista] = useState(false);
   const [categoriasList, setCategoriasList] = useState(false);
@@ -70,7 +70,6 @@ setCartProducts,
   const VolverAincio = () => {
     setMostrarProductos(false);
     limpiarFiltro();
- 
   };
 
   const uniqueAuthors = Array.from(
@@ -87,7 +86,7 @@ setCartProducts,
       <Navbar
         isBordered
         variant="sticky"
-        style={{ position: "fixed", zIndex: 1000} }
+        style={{ position: "fixed", zIndex: 1000 }}
         className="ContieneNavbar"
       >
         <Navbar.Brand className="LogoNombre">
@@ -102,7 +101,7 @@ setCartProducts,
             </Text>
           </Text>
         </Navbar.Brand>
-        <Navbar.Content hideIn="xs">
+        <Navbar.Content hideIn="xs" >
           <Navbar.Link>
             <Link onClick={VolverAincio} id="Inicio" to="/">
               Inicio
@@ -147,8 +146,8 @@ setCartProducts,
 
       {mostrarProductos && (
         <Carrito
-        cartProducts={cartProducts} 
-setCartProducts={setCartProducts} 
+          cartProducts={cartProducts}
+          setCartProducts={setCartProducts}
           Cantidad={Cantidad}
           setCantidad={setCantidad}
           cantidadCarrito={cantidadCarrito}

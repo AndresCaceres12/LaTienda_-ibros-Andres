@@ -4,8 +4,9 @@ import "./Navbar.css";
 import "./Carrito.css";
 import { useState, useEffect } from "react";
 import { Tooltip } from "@nextui-org/react";
-import HighlightOffIcon from '@mui/icons-material/HighlightOff';
-import { Button } from "@mui/material";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { DeleteForever } from "@mui/icons-material";
+import{ Loading} from "@nextui-org/react";
 export const Carrito = ({
   allProducts,
   toggleMostrarProductos,
@@ -14,12 +15,13 @@ export const Carrito = ({
   cantidadCarrito,
   setTotal,
   setAllProducts,
-  Cantidad,
-  setCantidad,
+  
 }) => {
-  const [Cart, setCart] = useState(Array.isArray(allProducts) ? allProducts : []);
+  const [Cart, setCart] = useState(
+    Array.isArray(allProducts) ? allProducts : []
+  );
   const [isEmpty, setIsEmpty] = useState();
-
+  const [isLoading, setIsLoading] = useState(false);
   const SumarTotal = () => {
     let total = 0;
     Cart.forEach((product) => {
@@ -52,11 +54,14 @@ export const Carrito = ({
   };
 
   const eliminarTodo = () => {
-    setCart([]);
-    setAllProducts([]);
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setCart([]);
+      setAllProducts([]);
+      setIsLoading(false);
+    }, 1000);
   };
-
-
 
   return (
     <div className="containerCARD">
@@ -69,7 +74,8 @@ export const Carrito = ({
               CantidadDeProductos();
             }}
           >
-           <HighlightOffIcon/></h3>
+            <HighlightOffIcon />
+          </h3>
         </div>
 
         <div>
@@ -84,32 +90,30 @@ export const Carrito = ({
                     srcSet=""
                   />
                   <div className="DescripcionBook">
-                    <span>Libro: {product.title}</span>
+                    <span> {product.title}</span>
                     <h6>Precio: $ {product.precio}</h6>
-                    
                   </div>
-                  <Tooltip
-                    content="Eliminar del carrito"
-                    placement="left"
-                  >
+                  <Tooltip content="Eliminar del carrito" placement="left">
                     <p onClick={() => removeFromCart(product)}>x</p>
                   </Tooltip>
                 </div>
               </li>
             ))}
-           
-              <Button variant="outlined" color="error"
-             
-                size="md"
-                id="EliminarTodo"
-                onClick={eliminarTodo}
-             
-              >
-             Vaciar carrito
-              </Button>
-                          
+            {isLoading && (
+              <div>
+                <Loading />
+              </div>
+            )}
+            <span
+              id="EliminarTodo"
+              onClick={eliminarTodo}
+              style={{ cursor: "pointer" }}
+            >
+              <DeleteForever />
+            </span>
           </ul>
         </div>
+
         <footer>
           <div className="FooterContainer">
             <div className="TotalPrecio">

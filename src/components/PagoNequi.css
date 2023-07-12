@@ -52,4 +52,14 @@ width: 50%;
   .payment-button:hover {
     background-color: #ee9e40;
   }
-  
+  @media (max-width: 452px) {
+    .nequi-payment{
+      height: 80% ;
+      padding: 30px;
+      width: 80%;
+    }
+    .form-row {
+      display: flex;
+      flex-direction: column;
+    }
+    }

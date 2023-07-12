@@ -71,9 +71,16 @@
   width: 32px;
   height: 32px;
 }
-@media (max-width: 700px) {
-  .container {
-    display: flex;
-    flex-direction: column;
+
+@media (max-width: 452px) {
+  .footer-text {
+    width: 300px;
+  }
+
+  .footer-heading {
+    width: 300px;
+  }
+  .slick-dots {
+    visibility: hidden;
   }
 }
