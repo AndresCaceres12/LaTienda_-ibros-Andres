@@ -6,7 +6,8 @@ import { useState, useEffect } from "react";
 import { Tooltip } from "@nextui-org/react";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { DeleteForever } from "@mui/icons-material";
-import{ Loading} from "@nextui-org/react";
+import { Loading } from "@nextui-org/react";
+import { Card } from "@mui/material";
 export const Carrito = ({
   allProducts,
   toggleMostrarProductos,
@@ -15,7 +16,6 @@ export const Carrito = ({
   cantidadCarrito,
   setTotal,
   setAllProducts,
-  
 }) => {
   const [Cart, setCart] = useState(
     Array.isArray(allProducts) ? allProducts : []
@@ -60,6 +60,9 @@ export const Carrito = ({
       setCart([]);
       setAllProducts([]);
       setIsLoading(false);
+      setTimeout(() => {
+        toggleMostrarProductos(false);
+      }, 2000);
     }, 1000);
   };
 
@@ -93,24 +96,25 @@ export const Carrito = ({
                     <span> {product.title}</span>
                     <h6>Precio: $ {product.precio}</h6>
                   </div>
-                  <Tooltip content="Eliminar del carrito" placement="left">
-                    <p onClick={() => removeFromCart(product)}>x</p>
-                  </Tooltip>
+
+                  <p onClick={() => removeFromCart(product)}>x</p>
                 </div>
               </li>
             ))}
-            {isLoading && (
-              <div>
-                <Loading />
-              </div>
+            {Cart.length > 0 && (
+              <span
+                id="EliminarTodo"
+                onClick={eliminarTodo}
+                style={{ cursor: "pointer" }}
+              >
+                {!isLoading && <DeleteForever style={{ color: "blue" }} />}{" "}
+                {isLoading && (
+                  <div className="cargando">
+                    <Loading type="points" />
+                  </div>
+                )}
+              </span>
             )}
-            <span
-              id="EliminarTodo"
-              onClick={eliminarTodo}
-              style={{ cursor: "pointer" }}
-            >
-              <DeleteForever />
-            </span>
           </ul>
         </div>
 
