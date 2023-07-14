@@ -108,7 +108,7 @@ export const RenderizarLibros = ({
       )}
 
       <div>
-        {filteredBooks.length < 1 && (
+        {!filteredBooks.length && (
           <div className="Cargando">
             <Loading />
           </div>
@@ -127,16 +127,15 @@ export const RenderizarLibros = ({
                           <b className="card-title">{book.title}</b>
                           <Link to={`/libro/${index}`}>
                             <Tooltip
-                              content="Mas infromacion del libro"
+                              content="Mas informacion del libro"
                               color="invert"
                             >
-                              {book.image_url ? (
+                              {book.cover && book.cover.medium ? (
                                 <Image
-                                  src={book.image_url}
+                                src={book.cover.medium}
+                                  alt="Portada del libro"
                                   objectFit="none"
-                                  alt="Default Image"
-                                  width={200}
-                                  height={300}
+                            
                                 />
                               ) : (
                                 <span>No hay imagen disponible</span>

@@ -4,7 +4,7 @@
   font-family: "Merriweather", serif;
 }
 .card-body:hover {
-  box-sizing: border-box;
+
   box-shadow: 0 0px 25px rgba(0, 0, 0, 0.5);
 }
 .card {

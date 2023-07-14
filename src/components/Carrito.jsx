@@ -87,7 +87,7 @@ export const Carrito = ({
               <li key={index}>
                 <div className="ContenedorCard">
                   <img
-                    src={product.image_url}
+                    src={product.cover.large}
                     width={"50px"}
                     alt=""
                     srcSet=""
