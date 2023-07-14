@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
-import "./Modal.css";
+import React, { useEffect } from "react";
+import "../style/Modal.css";
 import { Link } from "react-router-dom";
-
 function Modal({ onClose, setAllProducts }) {
 
   useEffect(() => {

@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "../style/Navbar.css";
 import { Carrito } from "./Carrito";
-import { Text } from "@nextui-org/react";
-import { Navbar } from "@nextui-org/react";
-import Menu from "@mui/material/Menu";
+import { Navbar,Text  } from "@nextui-org/react";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,7 +23,6 @@ const NavbarInicio = ({
   setTotal,
   Cantidad,
   setCantidad,
-  setBookInfo,
   cartProducts, 
   setCartProducts,
 }) => {

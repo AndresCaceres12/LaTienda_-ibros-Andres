@@ -1,5 +1,5 @@
 import React from "react";
-import "./Footer.css";
+import "../style/Footer.css";
 import { FaGithub, FaTwitter, FaInstagram } from "react-icons/fa";
 
 const Footer = () => {

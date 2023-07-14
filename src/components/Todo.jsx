@@ -1,11 +1,11 @@
 import React from "react";
 import axios from "axios";
 import { Routes, Route } from "react-router-dom";
-import { RenderizarLibros } from "./RenderizarLibros";
-import Apartado from "./Apartado";
+import { RenderizarLibros } from "../pages/RenderizarLibros";
+import Apartado from "../pages/Apartado";
 import Footer from "./Footer";
-import Pago from "./Pagos";
-import Modal from "./Modal";
+import Pago from "../pages/Pagos";
+import Modal from "../pages/ModalConfirmacion";
 import { useEffect, useState } from "react";
 
 function Todo({ total, setTotal, allProducts, setAllProducts }) {

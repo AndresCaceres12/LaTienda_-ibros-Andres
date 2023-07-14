@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./PagoNequi.css";
+import "../style/PagoNequi.css";
 
 import { Input } from "@nextui-org/react";
 import ConfirmacionP from "./ConfirmacionP";

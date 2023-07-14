@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import NavbarOpcional from "./NavbarOpcional";
-import "./Apartado.css";
+import NavbarOpcional from "../components/NavbarOpcional";
+import "../style/Apartado.css";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -19,7 +19,6 @@ const Apartado = ({ bookInfo }) => {
   if (!selectedBook) {
     return <div>Libro no encontrado</div>;
   }
-
 
   const icons = {
     Novela: faBookOpen,
@@ -39,13 +38,12 @@ const Apartado = ({ bookInfo }) => {
           <div className="imagenLibro">
             <img
               width={"300px"}
-              src={selectedBook.image_url}
+              src={selectedBook.cover.medium}
               alt={selectedBook.title}
             />
           </div>
 
           <div className="contenedorDescripcion">
-           
             <FontAwesomeIcon icon={icon} size="3x" color="#BFBFBF" />
             <h2>{selectedBook.title}</h2>
             <p>

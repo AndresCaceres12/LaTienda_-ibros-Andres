@@ -1,13 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./Navbar.css";
-import "./Carrito.css";
+import "../style/Carrito.css";
 import { useState, useEffect } from "react";
-import { Tooltip } from "@nextui-org/react";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { DeleteForever } from "@mui/icons-material";
 import { Loading } from "@nextui-org/react";
-import { Card } from "@mui/material";
 export const Carrito = ({
   allProducts,
   toggleMostrarProductos,

@@ -1,15 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Navbar, Text } from "@nextui-org/react";
-
-import "./Navbar.css";
-
+import "../style/Navbar.css";
 const NavbarOpcional = () => {
   return (
     <div>
-      <Navbar style={{position:"fixed", zIndex: 1000}} variant="sticky" className="ContieneNavbar">
-        <Navbar.Brand className="LogoNombre" >
-          
+      <Navbar
+        style={{ position: "fixed", zIndex: 1000 }}
+        variant="sticky"
+        className="ContieneNavbar"
+      >
+        <Navbar.Brand className="LogoNombre">
           <img
             src="https://cdn-icons-png.flaticon.com/128/3145/3145765.png"
             alt="Logo de libros"
@@ -22,13 +23,10 @@ const NavbarOpcional = () => {
         <Navbar.Content hideIn="xs">
           <Navbar.Link>
             {" "}
-            <Link  id="Inicio" to="/">
-              Volver para comprar 
+            <Link id="Inicio" to="/">
+              Volver para comprar
             </Link>
           </Navbar.Link>
-         
-          
-         
         </Navbar.Content>
       </Navbar>
     </div>

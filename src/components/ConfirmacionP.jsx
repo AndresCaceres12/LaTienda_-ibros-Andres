@@ -1,15 +1,8 @@
 import React, { useEffect, useState } from "react";
-import "./ConfirmacionP.css";
+import "../style/ConfirmacionP.css";
 import { Link } from "react-router-dom";
-import Modal from "./Modal";
-import Button from "@mui/material/Button";
-
-function ConfirmacionP({
-  total,
-  setAllProducts,
-  CerrarConfirmacion,
-
-}) {
+import Modal from "../pages/ModalConfirmacion";
+function ConfirmacionP({ total, setAllProducts, CerrarConfirmacion }) {
   const [showModal, setShowModal] = useState(false);
   useEffect(() => {
     const codigoAlmacenado = localStorage.getItem("referencia");

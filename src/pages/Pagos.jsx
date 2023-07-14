@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
-import PaymentForm from "./PagoTargeta";
-import NavbarOpcional from "./NavbarOpcional";
-import PagoNequi from "./PagoNequi";
+import PaymentForm from "../components/PagoTargeta";
+import NavbarOpcional from "../components/NavbarOpcional";
+import PagoNequi from "../components/PagoNequi";
 import { FaCreditCard } from "react-icons/fa";
-import "./Pagos.css";
+import "../style/Pagos.css";
 
 const Pago = ({ total, setTotal, setAllProducts }) => {
   const [targetForm, setTargetForm] = useState(true);

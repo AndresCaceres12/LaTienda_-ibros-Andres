@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import "./ConfirmacionCard.css";
+import "../style/ConfirmacionCard.css";
 import { Link } from "react-router-dom";
-
 function ConfirmacionCard({ total, CerrarConfirmacionCard }) {
   const [showModal, setShowModal] = useState(false);
   const [codigoGenerado, setCodigoGenerado] = useState("");

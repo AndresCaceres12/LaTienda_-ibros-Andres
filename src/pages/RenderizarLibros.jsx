@@ -5,11 +5,9 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import NavbarInicio from "./Navbar";
-import "./RenderizarLibros.css";
-import { Tooltip } from "@nextui-org/react";
-import { Loading } from "@nextui-org/react";
-import { Image } from "@nextui-org/react";
+import NavbarInicio from "../components/Navbar";
+import "../style/RenderizarLibros.css";
+import { Tooltip,Loading, Image} from "@nextui-org/react";
 
 export const RenderizarLibros = ({
   bookInfo,
@@ -130,12 +128,11 @@ export const RenderizarLibros = ({
                               content="Mas informacion del libro"
                               color="invert"
                             >
-                              {book.cover && book.cover.medium ? (
+                              {book.cover?.medium ? (
                                 <Image
-                                src={book.cover.medium}
+                                  src={book.cover.medium}
                                   alt="Portada del libro"
                                   objectFit="none"
-                            
                                 />
                               ) : (
                                 <span>No hay imagen disponible</span>

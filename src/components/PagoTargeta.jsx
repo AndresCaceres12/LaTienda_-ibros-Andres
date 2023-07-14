@@ -1,6 +1,5 @@
-import React, { useState,useEffect } from "react";
-import "./PagoTargeta.css";
-
+import React, { useState} from "react";
+import "../style/PagoTargeta.css";
 import { Input } from "@mui/material";
 import ConfirmacionCard from "./ConfirmacionCard";
 const PagoTargeta = ({setAllProducts, total}) => {
