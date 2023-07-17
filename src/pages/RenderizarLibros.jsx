@@ -8,7 +8,7 @@ import "slick-carousel/slick/slick-theme.css";
 import NavbarInicio from "../components/Navbar";
 import "../style/RenderizarLibros.css";
 import { Tooltip,Loading, Image} from "@nextui-org/react";
-
+import ResultadoBusqueda from "../components/ResultadoBusqueda";
 export const RenderizarLibros = ({
   bookInfo,
   setTotal,
@@ -156,6 +156,7 @@ export const RenderizarLibros = ({
                   ))}
                 </Slider>
               </div>
+              <ResultadoBusqueda/>
             </div>
           )}
         </div>

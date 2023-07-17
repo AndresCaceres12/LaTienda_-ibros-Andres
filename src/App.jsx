@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Todo from "./components/Todo";
-
+import ContextBooks from "./components/ContextBooks";
 const App = () => {
   const [total, setTotal] = useState(window.localStorage.getItem("Totalpagar"));
 
@@ -20,7 +20,8 @@ const App = () => {
   }, [allProducts]);
 
   return (
-    <div>
+    <ContextBooks>
+        <div>
       <Todo
         total={total}
         setTotal={setTotal}
@@ -28,6 +29,8 @@ const App = () => {
         setAllProducts={setAllProducts}
       />
     </div>
+    </ContextBooks>
+  
   );
 };
 

@@ -1,15 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState,useContext } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Link } from "react-router-dom";
 import "../style/Navbar.css";
 import { Carrito } from "./Carrito";
-import { Navbar,Text  } from "@nextui-org/react";
+import { Input, Navbar, Text } from "@nextui-org/react";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 import { Tooltip } from "@nextui-org/react";
-
+import { Home, Search } from "@mui/icons-material";
+import { useBooksContext, useinputContext } from "./ContextBooks";
 const NavbarInicio = ({
   bookInfo,
   setCategorias,
@@ -23,30 +24,29 @@ const NavbarInicio = ({
   setTotal,
   Cantidad,
   setCantidad,
-  cartProducts, 
+  cartProducts,
   setCartProducts,
 }) => {
   const [lista, setLista] = useState(false);
   const [categoriasList, setCategoriasList] = useState(false);
   const [mostrarProductos, setMostrarProductos] = useState(false);
-
+  const { search, setsearch } = useBooksContext(); 
+  const { LibrosBuscados, setLibrosBuscados } = useinputContext()
+  const EnviarFormulario = (e) => {
+    e.preventDefault();
+    setsearch(e.target.elements.searchInput.value);
+    e.target.reset();
+  };
   useEffect(() => {
     setCategoriasList(false);
     setLista(false);
   }, [mostrarProductos]);
-
+console.log(search)
   const mostrarAutores = () => {
     setLista(!lista);
     setCategoriasList(false);
     setMostrarProductos(false);
   };
-
-  const mostrarCategorias = () => {
-    setCategoriasList(!categoriasList);
-    setLista(false);
-    setMostrarProductos(false);
-  };
-
   const filtrarPorCategoria = (categoria) => {
     if (categoria === "Todos los libros") {
       setCategorias("");
@@ -97,20 +97,23 @@ const NavbarInicio = ({
               Libros Con Andres
             </Text>
           </Text>
+          <form onSubmit={EnviarFormulario}>
+            <Input
+              size="md"
+              name="searchInput"
+              placeholder="Libros, autores y más"
+              aria-label="Búsqueda"
+            />
+            <button style={{border:"none",backgroundColor:"transparent"}} type="submit"><Search/></button>
+          </form>
         </Navbar.Brand>
-        <Navbar.Content hideIn="xs" >
+        <Navbar.Content hideIn="xs">
           <Navbar.Link>
             <Link onClick={VolverAincio} id="Inicio" to="/">
-              Inicio
+              <Home />
             </Link>
           </Navbar.Link>
-          <Navbar.Link
-            isActive
-            onClick={mostrarCategorias}
-            style={{ cursor: "pointer" }}
-          >
-            Categorias
-          </Navbar.Link>
+
           <Navbar.Link
             isActive
             onClick={mostrarAutores}
